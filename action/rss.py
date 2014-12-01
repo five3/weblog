@@ -4,8 +4,8 @@ import web,time,settings
 from action.base import base as baseAction
 import model
 class rss(baseAction):
-    def __init__(self):
-        baseAction.__init__(self)
+    def __init__(self, pars=''):
+        baseAction.__init__(self, pars)
         settings = self.getSettings()
         self.assignTplDir(settings.ADMIN_TPL_DIR)
     def index(self):

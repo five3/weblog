@@ -5,8 +5,8 @@ import web
 from model.db.database import *
 from action.base import base as baseAction
 class install(baseAction):
-    def __init__(self):
-        baseAction.__init__(self)
+    def __init__(self, pars):
+        baseAction.__init__(self, pars)
         settings = self.getSettings()
         self.assignTplDir(settings.ADMIN_TPL_DIR)
     def index(self):

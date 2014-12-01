@@ -4,8 +4,8 @@ import web,time
 from action.base import base as baseAction
 
 class admin(baseAction):
-    def __init__(self):
-        baseAction.__init__(self)
+    def __init__(self, pars):
+        baseAction.__init__(self, pars)
         settings = self.getSettings()
         self.assignTplDir(settings.ADMIN_TPL_DIR)
     def check(self):

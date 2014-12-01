@@ -5,8 +5,8 @@ import web,time
 from action.base import base as baseAction
 import model
 class index(baseAction):
-    def __init__(self):
-        baseAction.__init__(self)
+    def __init__(self, pars):
+        baseAction.__init__(self, pars)
         settings = self.getSettings()
         self.assignTplDir(settings.TEMPLATE_THEME)
     def index(self):
@@ -30,7 +30,7 @@ class index(baseAction):
         return self.display('index')
 
     def show(self):
-        inputParams = self.getInput()
+        inputParams = self.getPars()
         if not inputParams.has_key('id') :
             settings = self.getSettings()
             web.seeother(settings.WEB_URL)

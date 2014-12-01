@@ -9,7 +9,7 @@ class base:
     referer = ''
     settings = {}
     errorMessage = ''
-    def __init__(self):
+    def __init__(self, pars=''):
         self.settings = settings
         self.tplData = {
             'webTitle' : self.settings.WEB_TITLE,
@@ -23,7 +23,8 @@ class base:
         self.tplDir = ''
         self.initCommonTplFunc()
         self.referer= web.ctx.env.get('HTTP_REFERER', self.settings.WEB_URL)
-
+        self.pars = pars
+        
     #初始化模板内置函数
     def initCommonTplFunc(self):
         subStr=lambda strings,offset,length : self.subText(strings,offset,length)
@@ -86,7 +87,9 @@ class base:
     #生成url
     def makeUrl(self,action,method='index',params={}):
         import urllib
-        paramsStr = '?'+urllib.urlencode(params) if len(params)>0 else ''
+        paramsStr = '/'.join(['%s_%s' % (k, urllib.quote(str(v))) for k,v in params.items()])
+        paramsStr = '/' + paramsStr if len(params)>0 else ''
+#         print 'paramsStr', paramsStr
         return self.settings.WEB_URL+action+'/'+method+paramsStr
 
     #是否已经登陆
@@ -148,3 +151,7 @@ class base:
                 self.errorMessage=i.note
                 return False
         return True
+    def getPars(self):
+        par_list = self.pars.strip().split('/')
+        pars_dict = dict([i.split('_') for i in par_list])
+        return pars_dict

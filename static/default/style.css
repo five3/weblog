@@ -75,7 +75,7 @@ blockquote p:last-child {margin-bottom:0;}
 #commentform {border-top:1px solid #f9f9f9; padding-top:10px;}
 #commentform input {width:230px; padding:5px; display:block;}
 #comments input,#comments textarea,#comments button {border-radius:3px;}
-#submit {padding:5px 10px; cursor:pointer; font-size:14px; border:1px solid #333; box-shadow:1px 1px 3px #d3d3d3; background:#444; background:-moz-linear-gradient(top, #444, #333); background: -webkit-gradient(linear, 0 0, 0 100%, from(#444), to(#333)); color:#fff; text-shadow:1px 1px #111;}
+#submit {padding:5px 10px; cursor:pointer; font-size:20px; border:1px solid #428bca; background:#428bca; color:#fff; }
 #submit:hover {color:#555; text-shadow:1px 1px #fff; border:1px solid #ccc; background:#f1f1f1; background:-moz-linear-gradient(top, #fff, #f1f1f1); background: -webkit-gradient(linear, 0 0, 0 100%, from(#f3f3f3), to(#eee));}
 .reply {padding-bottom:10px; font-size:12px;}
 .comment_list li {border-bottom:1px dashed #ccc; padding:10px 5px 0;}
