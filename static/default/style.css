@@ -19,7 +19,7 @@ input[type^="radio"] {border:none; background:none; width:auto;}
 code {background:rgb(255,255,255); border-left:3px dashed rgb(230,230,230); padding:10px 10px 10px 13px; font:12px/1.5 "Hiragino Sans GB",Tahoma,Helvetica,Arial; display:block;}
 #wrap,#footer_box {background:#fff; width:800px; padding:20px 10px; float:left;}
 #content {overflow:hidden; color:#555; text-shadow:1px 1px #fff; clear:both;}
-#header {text-align:center; margin-top: -20px; background: #E7E7E7 url(/static/default/bg2.jpg) no-repeat center; height:300px; width:100%; background-size: cover;}
+#header {text-align:center; margin-top: -20px; background: #E7E7E7 url(/static/default/bg3.jpg) no-repeat center; height:300px; width:100%; background-size: cover;}
 #logo {margin:20px auto 10px;}
 #logo a {color:#000;}
 #header h2 {font-size:14px;}
@@ -90,7 +90,7 @@ blockquote p:last-child {margin-bottom:0;}
 #footer_box {font-size:12px;}
 #linkcat a {margin-right:10px; color:#666;}
 #sponsor {margin-bottom:10px; padding-bottom:10px; border-bottom:1px dashed #ccc;}
-#footer {margin-bottom:30px; text-align:center; font-size:12px; color:#5d6673; text-shadow:-1px -1px #000; width:1000px; margin:5px auto; clear:both;}
+#footer {margin-bottom:30px; text-align:center; font-size:12px; color:#5d6673; text-shadow:0px 0px #000; width:1080px; margin:5px auto; clear:both;}
 #footer a {color:#5d6673;}
 .aligncenter {display:block; margin-left:auto; margin-right:auto;}
 .alignleft {float:left;}
