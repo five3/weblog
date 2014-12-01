@@ -13,6 +13,7 @@ class base:
         self.settings = settings
         self.tplData = {
             'webTitle' : self.settings.WEB_TITLE,
+            'webName' : self.settings.WEB_NAME,
             'webUrl' : self.settings.WEB_URL,
             'webKeywords' : self.settings.WEB_KEYWORDS,
             'webDescription' : self.settings.WEB_DESCRIPTION,

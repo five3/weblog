@@ -4,8 +4,9 @@ import os
 #网站信息
 WEB_URL='http://www.chenxiaowu.com/'
 WEB_TITLE='上帝De助手 的博客'
+WEB_NAME='SEO优化_SEM营销'
 WEB_DESCRIPTION='我不生产内容，我只是互联网的搬运工！'
-WEB_KEYWORDS=['seo', 'sem', '网络营销']
+WEB_KEYWORDS=['seo优化', 'sem营销', '网络推广']
 TEMPLATE_THEME='default'
 PER_PAGE_COUNT = 10
 

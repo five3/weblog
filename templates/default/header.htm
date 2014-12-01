@@ -3,7 +3,7 @@ $def with (tplData)
 <html lang="zh-CN">
 <head profile="http://gmpg.org/xfn/11">
     <meta charset="UTF-8" />
-    <title>$:'_'.join(tplData['webKeywords']) - $:tplData['webTitle'] </title>
+    <title>$:tplData['webName'] - $:tplData['webTitle'] </title>
     <link rel="stylesheet" href="$makeUrl('static','default/style.css')" />
     <link rel="alternate" type="application/rss+xml" title=" RSS Feed" href="$makeUrl('rss')" />
     <script type="text/javascript" src="$makeUrl('static','default/bin.js')"></script>
@@ -11,6 +11,7 @@ $def with (tplData)
     <!--[if IE]>
     <script src="$makeUrl('static','default/html5.js')"></script>
     <![endif]-->
+    <meta name="baidu-site-verification" content="Td06kaeIZj" />
     <meta name="keywords" content="$:','.join(tplData['webKeywords'])" />
     <meta name="description" content="$:tplData['webDescription']" />
 </head>
