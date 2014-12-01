@@ -7,7 +7,8 @@ import MySQLdb.cursors
 class mysql:
     def __init__(self):
         dbFilePath = settings.DB_STRING
-        dbConfig = dbFilePath.line.strip("\n").split("|")
+        dbConfig = dbFilePath.strip("\n").split("/")
+#         print dbConfig
         if len(dbConfig) != 5:
             raise Exception,'db string is error'
         host = dbConfig[0]
@@ -15,16 +16,17 @@ class mysql:
         user = dbConfig[2]
         passwd = dbConfig[3]
         db = dbConfig[4]
-        self.conn = MySQLdb.connect(host, port,user, passwd,db,cursorclass = MySQLdb.cursors.DictCursor)
+        self.conn = MySQLdb.connect(host=host, user=user, passwd=passwd, db=db, port=int(port), charset="utf8", cursorclass=MySQLdb.cursors.DictCursor)
         self.cursor = self.conn.cursor()
 
     def fetchAll(self, sql,data=[]):
-        result = None
+        result = []
         if self.cursor.execute(sql,data):
             result = self.cursor.fetchall()
         return result
     def fetchOne(self, sql,data=[]):
-        result = None
+        result = []
+#         print sql,data
         if self.cursor.execute(sql,data):
             result = self.cursor.fetchone()
         return result
@@ -32,7 +34,7 @@ class mysql:
         sql = "SELECT "+colums+" FROM " + tableName + " WHERE 1=1"
         if  type(condition) == dict:
             for i in condition.keys():
-                sql = sql + " AND "+i+"=?"
+                sql = sql + " AND "+i+"=%s"
         else:
             sql = sql + condition
         if orders !='':
@@ -44,7 +46,7 @@ class mysql:
         sql = "SELECT "+colums+" FROM " + tableName + " WHERE 1=1"
         if  type(condition) == dict:
             for i in condition.keys():
-                sql = sql + " AND "+i+"=?"
+                sql = sql + " AND "+i+"=%s"
         else:
             sql = sql + condition
         if orders !='':
@@ -57,7 +59,8 @@ class mysql:
 
         sql = sql + ','.join(data.keys())
         sql = sql + ") VALUES('"
-        sql = sql + "','".join(data.values())
+        dv = [str(i) for i in data.values()]
+        sql = sql + "','".join(dv)
         sql = sql + "')"
         status = self.cursor.execute(sql)
         self.conn.commit()
@@ -66,28 +69,32 @@ class mysql:
         sql = "DELETE FROM " + tableName + " WHERE 1=1"
         if  type(condition) == dict:
             for i in condition.keys():
-                sql = sql + " AND "+i+"=?"
+                sql = sql + " AND "+i+"=%s"
         else:
             sql = sql + condition
         status = self.cursor.execute(sql, condition.values())
         self.conn.commit()
         return status
-    def update(self, tableName, data,condition):
+    def update(self, tableName, data, condition):
         sql = "UPDATE " + tableName + " SET "
         #update data
         if  type(data) == dict:
+            ts = ""
             for i in data.keys():
-                sql = sql + " AND "+i+"=?"
+                ts += " AND "+i+"=%s"
+            sql += ts[5:]
         else:
             sql = sql + data
             #condition
         sql = sql + " WHERE 1=1 "
         if  type(condition) == dict:
             for i in condition.keys():
-                sql = sql + " AND "+i+"=?"
+                sql = sql + " AND "+i+"=%s"
         else:
             sql = sql + condition
-        status = self.cursor.execute(sql, data.values()+condition.values())
+        sql = sql % tuple(data.values()+condition.values())
+#         print sql
+        status = self.cursor.execute(sql)
         self.conn.commit()
         return status
     def execute(self,sql):

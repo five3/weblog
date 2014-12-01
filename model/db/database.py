@@ -33,7 +33,7 @@ class database :
         return self.dbObj.update(tableName,data,condition)
 
     def execute(self,sql):
-        print sql
+#         print sql
         return self.dbObj.execute(sql)
 
     def getList(self,tableName,colums,condition,orders='',limits=''):

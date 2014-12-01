@@ -4,7 +4,7 @@
 import web,time
 from action.base import base as baseAction
 import model
-class index(baseAction):
+class life(baseAction):
     def __init__(self):
         baseAction.__init__(self)
         settings = self.getSettings()
@@ -26,7 +26,7 @@ class index(baseAction):
         commentObj=model.comment()
         commentList = commentObj.getList('*',{'status':1},'id desc',str(offset)+','+str(count))
         self.assign('commentList',commentList)
-#         print cmsList
+
         return self.display('index')
 
     def show(self):

@@ -10,12 +10,13 @@ TEMPLATE_THEME='default'
 PER_PAGE_COUNT = 10
 
 #账号相关
-ADMIN_USERNAME = 'chenxiaowu'
-ADMIN_PASSWORD='five3@163.com'
+ADMIN_USERNAME = 'five3@163.com'
+ADMIN_PASSWORD='chenxiaowu'
 
 #项目配置
 DEFAULT_PATH='/index/index'
 DEBUG_SWITCH=True
+CATEGORY_LIST = {'default':'默认分类', 'seo':'SEO', 'life':'生活'}
 STATUS_LIST = {1:'发布',0:'草稿'}
 
 #路径信息
@@ -29,7 +30,9 @@ TPL_DIR = 'templates'
 ADMIN_TPL_DIR='admin'
 
 #数据库信息
-DB_TYPE='sqlite'
-DB_STRING=DATA_DIR_PATH+'cms.db'
+# DB_TYPE='sqlite'
+# DB_STRING=DATA_DIR_PATH+'cms.db'
+# DB_TABEL_PREFIX='cms_'
+DB_TYPE='mysql'
+DB_STRING='localhost/3306/root/root/weblog'
 DB_TABEL_PREFIX='cms_'
-

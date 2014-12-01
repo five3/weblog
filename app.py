@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 #coding=utf-8
-import web, settings
+import web, settings, traceback
 
 urls = (
     '([a-z0-9\/]*)', 'dispatcher'
@@ -16,27 +16,28 @@ class dispatcher:
         return self.__request(path)
 
     def __request(self, path=''):
-        try:
-            if path.count('/') < 2:
-                path = settings.DEFAULT_PATH
-            modelName, controllerName = path.strip()[1:].split('/', 1)
-            if not controllerName:
-                controllerName = 'index'
-            if not modelName or not controllerName:
-                return 'model/controller missing'
-            moduleList = __import__('action.' + modelName, {}, {}, [modelName])
-            modelObj = getattr(moduleList, modelName)()
-            if hasattr(modelObj, controllerName):
-                result = getattr(modelObj, controllerName)()
-            else:
-                result = 'no controller'
-            return result
-        except Exception ,e:
-            from action.base import base as baseAction
-            baseObj=baseAction()
-            if e.message == 'db not exists' :
-                return baseObj.error('尚未安装',baseObj.makeUrl('install'))
-            return baseObj.error(e.message,baseObj.makeUrl('index'))
+        #try:
+        if path.count('/') < 2:
+            path = settings.DEFAULT_PATH
+        modelName, controllerName = path.strip()[1:].split('/', 1)
+        if not controllerName:
+            controllerName = 'index'
+        if not modelName or not controllerName:
+            return 'model/controller missing'
+        moduleList = __import__('action.' + modelName, {}, {}, [modelName])
+        modelObj = getattr(moduleList, modelName)()
+        if hasattr(modelObj, controllerName):
+            result = getattr(modelObj, controllerName)()
+        else:
+            result = 'no controller'
+        return result
+#         except Exception ,e:
+#             traceback.format_exc()
+#             from action.base import base as baseAction
+#             baseObj=baseAction()
+#             if e.message == 'db not exists' :
+#                 return baseObj.error('尚未安装',baseObj.makeUrl('install'))
+#             return baseObj.error(e.message,baseObj.makeUrl('index'))
             #raise Exception,e.message
 def session_hook():
     web.ctx.session = session

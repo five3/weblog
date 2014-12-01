@@ -19,7 +19,7 @@ class cms(baseAction):
             'createTime':date,
             'status':userInput['status'],
             'orders':userInput['orders'],
-            'views':0,
+            'views': 0,
             'commentCount':0
         }
         status = model.cms().insert(data)

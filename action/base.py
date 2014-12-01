@@ -56,7 +56,7 @@ class base:
     def display(self,tplName):
         if self.tplDir == '':
             self.assignTplDir(settings.TEMPLATE_THEME)
-        print self.tplDir,settings.TEMPLATE_THEME
+#         print self.tplDir,settings.TEMPLATE_THEME
         self.tplData['render'] = web.template.render(self.tplDir,globals=self.globalsTplFuncs)
         return getattr(self.tplData['render'], tplName)(self.tplData)
 
