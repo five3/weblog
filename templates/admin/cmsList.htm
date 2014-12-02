@@ -13,7 +13,7 @@ $for i in tplData['cmsList']:
     <tr> <td>$:i['id'] </td> <td>$:i['name']</td><td>$:tplData['statusList'][i['status']]</td>
         <td>$:i['orders']</td>
         <td>
-            <a href="$makeUrl('index','show',{'id':i['id']})" >查看</a>
+            <a target="_blank" href="$makeUrl('index','show',{'id':i['id']})" >查看</a>
              |
             <a href="$makeUrl('cms','edit',{'id':i['id']})" >编辑</a>
             | <a href="$makeUrl('cms','delete',{'id':i['id']})" onclick="return confirm('确认删除？')">删除</a>

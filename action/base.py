@@ -23,7 +23,7 @@ class base:
         self.tplDir = ''
         self.initCommonTplFunc()
         self.referer= web.ctx.env.get('HTTP_REFERER', self.settings.WEB_URL)
-        self.pars = pars
+        self.pars = pars.strip()
         
     #初始化模板内置函数
     def initCommonTplFunc(self):
@@ -152,6 +152,7 @@ class base:
                 return False
         return True
     def getPars(self):
-        par_list = self.pars.strip().split('/')
+#         print self.pars
+        par_list = self.pars.split('/') if self.pars else []
         pars_dict = dict([i.split('_') for i in par_list])
         return pars_dict

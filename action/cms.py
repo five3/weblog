@@ -42,7 +42,7 @@ class cms(baseAction):
         else:
             return self.error('修改失败')
     def list(self):
-        inputParams = self.getInput()
+        inputParams = self.getPars()
         page = int(inputParams['page']) if inputParams.has_key('page') else 1
         settings = self.getSettings()
         count = settings.PER_PAGE_COUNT
@@ -60,7 +60,7 @@ class cms(baseAction):
     def add(self):
         return self.display('cmsAdd')
     def edit(self):
-        inputParams = self.getInput()
+        inputParams = self.getPars()
         if not inputParams.has_key('id') :
             return self.error('文章不存在')
         id=inputParams['id']
@@ -70,7 +70,7 @@ class cms(baseAction):
         return self.display('cmsEdit')
 
     def delete(self):
-        inputParams = self.getInput()
+        inputParams = self.getPars()
         if not inputParams.has_key('id') :
             return self.error('文章不存在')
         id=inputParams['id']

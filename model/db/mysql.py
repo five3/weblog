@@ -26,15 +26,16 @@ class mysql:
         return result
     def fetchOne(self, sql,data=[]):
         result = []
-#         print sql,data
-        if self.cursor.execute(sql,data):
+        sql = sql % tuple(data)
+#         print sql 
+        if self.cursor.execute(sql):
             result = self.cursor.fetchone()
         return result
     def getList(self,tableName,colums,condition,orders='',limits=''):
         sql = "SELECT "+colums+" FROM " + tableName + " WHERE 1=1"
         if  type(condition) == dict:
             for i in condition.keys():
-                sql = sql + " AND "+i+"=%s"
+                sql = sql + " AND "+i+"='%s'"
         else:
             sql = sql + condition
         if orders !='':
@@ -46,7 +47,7 @@ class mysql:
         sql = "SELECT "+colums+" FROM " + tableName + " WHERE 1=1"
         if  type(condition) == dict:
             for i in condition.keys():
-                sql = sql + " AND "+i+"=%s"
+                sql = sql + " AND "+i+"='%s'"
         else:
             sql = sql + condition
         if orders !='':
@@ -69,7 +70,7 @@ class mysql:
         sql = "DELETE FROM " + tableName + " WHERE 1=1"
         if  type(condition) == dict:
             for i in condition.keys():
-                sql = sql + " AND "+i+"=%s"
+                sql = sql + " AND "+i+"='%s'"
         else:
             sql = sql + condition
         status = self.cursor.execute(sql, condition.values())
@@ -81,15 +82,15 @@ class mysql:
         if  type(data) == dict:
             ts = ""
             for i in data.keys():
-                ts += " AND "+i+"=%s"
-            sql += ts[5:]
+                ts += " , "+i+"='%s'"
+            sql += ts[2:]
         else:
             sql = sql + data
             #condition
         sql = sql + " WHERE 1=1 "
         if  type(condition) == dict:
             for i in condition.keys():
-                sql = sql + " AND "+i+"=%s"
+                sql = sql + " AND "+i+"='%s'"
         else:
             sql = sql + condition
         sql = sql % tuple(data.values()+condition.values())
