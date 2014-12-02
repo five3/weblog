@@ -9,6 +9,7 @@ class index(baseAction):
         baseAction.__init__(self, pars)
         settings = self.getSettings()
         self.assignTplDir(settings.TEMPLATE_THEME)
+        
     def index(self):
         settings = self.getSettings()
         count = settings.PER_PAGE_COUNT
@@ -29,6 +30,66 @@ class index(baseAction):
 #         print cmsList
         return self.display('index')
 
+    def seo(self):
+        settings = self.getSettings()
+        count = settings.PER_PAGE_COUNT
+        inputParams = self.getInput()
+        page = int(inputParams['page']) if inputParams.has_key('page') else 1
+        offset= (page-1)*count if page > 0 else 0
+        cmsObj = model.cms()
+        condition = {'status':1}
+        listData = cmsObj.getOne('COUNT(*) AS `total`',condition)
+        totalCount = listData['total']
+        cmsList = cmsObj.getList('*',condition,'orders desc,createTime desc',str(offset)+','+str(count))
+        self.assign('cmsList',cmsList)
+        pageString = self.getPageStr(self.makeUrl('index','index'),page,count,totalCount)
+        self.assign('pageString',pageString)
+        commentObj=model.comment()
+        commentList = commentObj.getList('*',{'status':1},'id desc',str(offset)+','+str(count))
+        self.assign('commentList',commentList)
+#         print cmsList
+        return self.display('index')
+    
+    def life(self):
+        settings = self.getSettings()
+        count = settings.PER_PAGE_COUNT
+        inputParams = self.getInput()
+        page = int(inputParams['page']) if inputParams.has_key('page') else 1
+        offset= (page-1)*count if page > 0 else 0
+        cmsObj = model.cms()
+        condition = {'status':1}
+        listData = cmsObj.getOne('COUNT(*) AS `total`',condition)
+        totalCount = listData['total']
+        cmsList = cmsObj.getList('*',condition,'orders desc,createTime desc',str(offset)+','+str(count))
+        self.assign('cmsList',cmsList)
+        pageString = self.getPageStr(self.makeUrl('index','index'),page,count,totalCount)
+        self.assign('pageString',pageString)
+        commentObj=model.comment()
+        commentList = commentObj.getList('*',{'status':1},'id desc',str(offset)+','+str(count))
+        self.assign('commentList',commentList)
+#         print cmsList
+        return self.display('index')
+    
+    def reading(self):
+        settings = self.getSettings()
+        count = settings.PER_PAGE_COUNT
+        inputParams = self.getInput()
+        page = int(inputParams['page']) if inputParams.has_key('page') else 1
+        offset= (page-1)*count if page > 0 else 0
+        cmsObj = model.cms()
+        condition = {'status':1}
+        listData = cmsObj.getOne('COUNT(*) AS `total`',condition)
+        totalCount = listData['total']
+        cmsList = cmsObj.getList('*',condition,'orders desc,createTime desc',str(offset)+','+str(count))
+        self.assign('cmsList',cmsList)
+        pageString = self.getPageStr(self.makeUrl('index','index'),page,count,totalCount)
+        self.assign('pageString',pageString)
+        commentObj=model.comment()
+        commentList = commentObj.getList('*',{'status':1},'id desc',str(offset)+','+str(count))
+        self.assign('commentList',commentList)
+#         print cmsList
+        return self.display('index')
+    
     def show(self):
         inputParams = self.getPars()
         if not inputParams.has_key('id') :
