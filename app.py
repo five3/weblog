@@ -48,6 +48,12 @@ class dispatcher:
 def session_hook():
     web.ctx.session = session
 
+import sys
+print sys.getdefaultencoding()
+reload(sys)
+sys.setdefaultencoding('utf-8')
+print sys.getdefaultencoding()
+
 if __name__ == "__main__":
     app = web.application(urls, globals())
     #web.header("Content-Type","text/html; charset=utf-8")
