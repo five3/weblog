@@ -162,7 +162,7 @@ class base:
         REQUEST_METHOD = web.ctx.env['REQUEST_METHOD']
         if REQUEST_METHOD.upper() == 'POST':
             return web.input()
-        print self.pars
+#         print self.pars
         par_list = self.pars.split('/') if self.pars else []
         pars_dict = dict([i.split('_') for i in par_list])
         return pars_dict
