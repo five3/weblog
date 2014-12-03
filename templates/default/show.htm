@@ -8,7 +8,14 @@ $:tplData['render'].header(tplData)
 	<small class="meta">$:tplData['atl']['createTime']</small>
 	$:tplData['atl']['content']
 	
-	<small class="meta"> 查看：$:tplData['atl']['views']</small>
+	<small class="meta"> 查看：$:tplData['atl']['views'] 
+	$ cate = tplData['atl']['category']
+	分类：<a href="${makeUrl('index', cate)}" >${tplData['atl']['categoryList'].get(cate)}</a>				
+	标签：
+	$ tag_list = tplData['atl']['tags'].split('，')
+	$for tag in tag_list:
+		<a href="${makeUrl('index', 'tag', {'name' : tag} )}">$tag</a>
+	</small>
 	</article>
 	
 	    $:tplData['render'].comments(tplData)

@@ -13,7 +13,7 @@ class index(baseAction):
     def index(self):
         settings = self.getSettings()
         count = settings.PER_PAGE_COUNT
-        inputParams = self.getInput()
+        inputParams = self.getPars()
         page = int(inputParams['page']) if inputParams.has_key('page') else 1
         offset= (page-1)*count if page > 0 else 0
         cmsObj = model.cms()
@@ -30,10 +30,30 @@ class index(baseAction):
 #         print cmsList
         return self.display('index')
 
+    def tag(self):
+        settings = self.getSettings()
+        count = settings.PER_PAGE_COUNT
+        inputParams = self.getPars()
+        page = int(inputParams['page']) if inputParams.has_key('page') else 1
+        offset= (page-1)*count if page > 0 else 0
+        cmsObj = model.cms()
+        condition = {'status':1}
+        listData = cmsObj.getOne('COUNT(*) AS `total`',condition)
+        totalCount = listData['total']
+        cmsList = cmsObj.getList('*',condition,'orders desc,createTime desc',str(offset)+','+str(count))
+        self.assign('cmsList',cmsList)
+        pageString = self.getPageStr(self.makeUrl('index','index'),page,count,totalCount)
+        self.assign('pageString',pageString)
+        commentObj=model.comment()
+        commentList = commentObj.getList('*',{'status':1},'id desc',str(offset)+','+str(count))
+        self.assign('commentList',commentList)
+#         print cmsList
+        return self.display('index')
+    
     def seo(self):
         settings = self.getSettings()
         count = settings.PER_PAGE_COUNT
-        inputParams = self.getInput()
+        inputParams = self.getPars()
         page = int(inputParams['page']) if inputParams.has_key('page') else 1
         offset= (page-1)*count if page > 0 else 0
         cmsObj = model.cms()
@@ -53,7 +73,7 @@ class index(baseAction):
     def life(self):
         settings = self.getSettings()
         count = settings.PER_PAGE_COUNT
-        inputParams = self.getInput()
+        inputParams = self.getPars()
         page = int(inputParams['page']) if inputParams.has_key('page') else 1
         offset= (page-1)*count if page > 0 else 0
         cmsObj = model.cms()
@@ -73,7 +93,7 @@ class index(baseAction):
     def reading(self):
         settings = self.getSettings()
         count = settings.PER_PAGE_COUNT
-        inputParams = self.getInput()
+        inputParams = self.getPars()
         page = int(inputParams['page']) if inputParams.has_key('page') else 1
         offset= (page-1)*count if page > 0 else 0
         cmsObj = model.cms()
@@ -106,9 +126,12 @@ class index(baseAction):
         #view count incr
         cmsObj.update(updateData,condition)
         commentList=model.comment().getList('*',{'status':1,'cmsId':int(id)})
+        atl['categoryList'] = self.getSettings().CATEGORY_LIST
         self.assign('atl',atl)
         self.assign('commentList',commentList)
+        self.assignSEO(atl['name'], atl['keywords'], atl['description'])
         return self.display('show')
+    
     def comment(self):
         userInput= self.getInput()
         cmsObj = model.cms()
@@ -127,7 +150,8 @@ class index(baseAction):
         if not self.validates(validList):
             return self.error(self.errorMessage)
         date = time.strftime("%Y-%m-%d %H:%M:%S",time.localtime())
-        ip=web.ctx.ip
+        HTTP_X_REAL_IP =  web.ctx.env['HTTP_X_REAL_IP']
+        ip=HTTP_X_REAL_IP if HTTP_X_REAL_IP else web.ctx.ip
         data={
             'cmsId':cmsId,
             'content':userInput['content'],

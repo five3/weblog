@@ -1,11 +1,19 @@
 $def with (tplData)
 $:tplData['render'].header()
 <form action="$makeUrl('cms','modify')" method="post">
-    <table width="750" border="0" cellspacing="0" cellpadding="1" class="addtable">
+    <table width="100%" border="0" cellspacing="0" cellpadding="1" class="addtable">
         <tr>
             <td width="100" scope="col">标题:</td>
             <td width="608" scope="col"><input name="name" type="text" id="name" value="$:tplData['atl']['name']" /></td>
         </tr>
+        <tr>
+            <td width="100" scope="col">关键字:</td>
+            <td width="608" scope="col"><input name="keywords" type="text" id="keywords" value="$:tplData['atl']['keywords']" /></td>
+        </tr>
+        <tr>
+            <td width="100" scope="col">文章摘要:</td>
+            <td width="608" scope="col"><textarea style="width:800px; height:60px;" name="description"  id="description" >$:tplData['atl']['description']</textarea></td>
+        </tr>  
         <tr>
             <td colspan="2" scope="col">
                 <textarea rows="10" cols="5" name="content" id="content">$:tplData['atl']['content']</textarea>
@@ -14,8 +22,8 @@ $:tplData['render'].header()
                 <script type="text/javascript">
                     var instance=new TINY.editor.edit('editor',{
                         id:'content',
-                        width:740,
-                        height:175,
+                        width:1070,
+                        height:350,
                         cssclass:'contentls',
                         controlclass:'tecontrol',
                         rowclass:'teheader',
@@ -36,6 +44,22 @@ $:tplData['render'].header()
             </td>
         </tr>
         <tr>
+            <td width="100" scope="col"><b style="color:#ff0000;">SEO规则说明:</b></td>
+            <td width="608" scope="col"></td>
+        </tr>
+        <tr>
+            <td colspan="2" scope="col">
+            	<ol style="color:#ff0000;">
+            		<li>1、H标签正确使用</li>
+            		<li>2、段落剪短</li>
+            		<li>3、重点关键字要加重字体</li>
+            		<li>4、为可添加链接的关键字添加链接</li>
+            		<li>5、适当配图说明，图片添加alt提示</li>
+            		<li>6、添加提示转载说明</li>
+            	</ol>
+			</td>
+        </tr>
+        <tr>
             <td width="100" scope="col">排序:</td>
             <td width="608" scope="col"><input name="orders" type="text" id="orders" value="$:tplData['atl']['orders']" /></td>
         </tr>
@@ -49,6 +73,22 @@ $:tplData['render'].header()
                         selected="selected"
                     >$:v</option>
                 </SELECT>
+        </tr>
+        <tr>
+            <td scope="col">分类:</td>
+            <td scope="col">
+                <SELECT  name="category" id="category">
+                    $for k,v in tplData['categoryList'].items():
+                    <option value="$:k"
+                    $if k == tplData['atl']['category']:
+                        selected="selected"
+                    >$:v</option>
+                </SELECT>
+        </tr>
+        <tr>
+            <td scope="col">标签:</td>
+            <td scope="col">
+            	<input name="tags" id="tags" value="$tplData['atl']['tags']" />
         </tr>
         <tr>
             <td colspan="2" scope="col">

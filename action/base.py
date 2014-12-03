@@ -12,12 +12,14 @@ class base:
     def __init__(self, pars=''):
         self.settings = settings
         self.tplData = {
-            'webTitle' : self.settings.WEB_TITLE,
-            'webName' : self.settings.WEB_NAME,
             'webUrl' : self.settings.WEB_URL,
+            'webName' : self.settings.WEB_NAME,
+            'webSubname' : self.settings.WEB_SUBNAME,
+            'webTitle' : self.settings.WEB_TITLE,
             'webKeywords' : self.settings.WEB_KEYWORDS,
             'webDescription' : self.settings.WEB_DESCRIPTION,
-            'statusList':self.settings.STATUS_LIST
+            'statusList':self.settings.STATUS_LIST,
+            'categoryList':self.settings.CATEGORY_LIST
         }
         self.globalsTplFuncs = {}
         self.tplDir = ''
@@ -53,6 +55,11 @@ class base:
             self.tplData = dict(self.tplData,**key)
         else:
             self.tplData[key] = value
+
+    def assignSEO(self, title='', keywords='', des=''):
+        self.tplData['webTitle'] = title
+        self.tplData['webKeywords'] = keywords
+        self.tplData['webDescription'] = des
 
     #显示模板
     def display(self,tplName):
@@ -152,7 +159,11 @@ class base:
                 return False
         return True
     def getPars(self):
-#         print self.pars
+        REQUEST_METHOD = web.ctx.env['REQUEST_METHOD']
+        if REQUEST_METHOD.upper() == 'POST':
+            return web.input()
+        print self.pars
         par_list = self.pars.split('/') if self.pars else []
         pars_dict = dict([i.split('_') for i in par_list])
         return pars_dict
+    

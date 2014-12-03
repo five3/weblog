@@ -1,9 +1,9 @@
 body,h1,h2,h3,p,blockquote,dl,dt,dd,ul,ol,li,button,input,textarea {margin: 0; padding: 0;}
 header,footer,article,section,nav,menu,hgroup {display:block;}
-body {font-family:"Hiragino Sans GB","Microsoft Yahei",Tahoma, Helvetica, Arial, "SimSun", sans-serif; line-height:1.6;}
+body {font-family:"Hiragino Sans GB","Microsoft Yahei",Tahoma, Helvetica, Arial, "SimSun", sans-serif; line-height:1.6; font-size:16px;}
 h1,h2,h3 {font-weight:400;}
 h1,h2 {font-size:24px;}
-h3 {font-size:14px;}
+h3 {font-size:18px;}
 img {border:none;}
 a img:hover {background:none; border:none;}
 a {color:#07b; text-decoration:none;}
@@ -16,7 +16,7 @@ input:focus,textarea:focus {background:#fff; border-color:#999;}
 input {vertical-align:middle;}
 input[type^="radio"] {border:none; background:none; width:auto;}
 ::selection {color:#fff; background:#444; text-shadow:none;}
-code {background:rgb(255,255,255); border-left:3px dashed rgb(230,230,230); padding:10px 10px 10px 13px; font:12px/1.5 "Hiragino Sans GB",Tahoma,Helvetica,Arial; display:block;}
+code {background:#EFEBEB; border-left:3px dashed rgb(230,230,230); padding:10px 10px 10px 13px; font:12px/1.5 "Hiragino Sans GB",Tahoma,Helvetica,Arial; display:block;}
 #wrap,#footer_box {background:#fff; width:800px; padding:20px 10px; float:left;}
 #content {overflow:hidden; color:#555; text-shadow:1px 1px #fff; clear:both;}
 #header {text-align:center; margin-top: -20px; background: #E7E7E7 url(/static/default/bg3.jpg) no-repeat center; height:300px; width:100%; background-size: cover;}
@@ -38,9 +38,9 @@ code {background:rgb(255,255,255); border-left:3px dashed rgb(230,230,230); padd
 #menu .current-menu-item a,#menu .current-menu-parent a {color:#444; font-size:30px; line-height:30px;}
 #menu li ul {display:none;}
 #post_list section {border-bottom:1px dashed #bbb; margin-bottom:20px;}
-.meta {font-size:12px; margin-bottom:20px; color:#999; display:block; clear:both;}
+.meta {font-size:18px; margin-bottom:20px; color:#999; display:block; clear:both;}
 #post_content {padding-top:10px;}
-.post,.page {font-size:16px;letter-spacing:1px;}
+.post,.page {font-size:18px;letter-spacing:1px;}
 .page h1 {margin-bottom:20px;}
 .post {margin-bottom:20px; border-bottom:1px dashed #bbb;}
 .post h2 {font-size:25px; margin-bottom:15px;}
@@ -60,7 +60,7 @@ blockquote p:last-child {margin-bottom:0;}
 .navigation {height:20px; line-height:20px; font-size:12px;}
 .navigation a {color:#666;}
 #nopage {text-align:center; padding:180px 0 100px; background:url(404.png) no-repeat center 70px;}
-#comments {margin-top:30px; font-size:14px;}
+#comments {margin-top:30px; font-size:16px;}
 #comments h3 {border-bottom:1px solid #ddd; padding-bottom:5px;}
 #comments .navigation {margin-top:10px;}
 .comment-form-comment label {display:none;}
@@ -85,7 +85,7 @@ blockquote p:last-child {margin-bottom:0;}
 .bypostauthor {background:#fff6ed;}
 .thread-odd {background:#eee;}
 .comment-form-author,.comment-form-email,.comment-form-url {float:left; width:265px;}
-.comment-notes {font-size:12px;}
+.comment-notes {font-size:18px;}
 .form-allowed-tags {display:none;}
 #footer_box {font-size:12px;}
 #linkcat a {margin-right:10px; color:#666;}

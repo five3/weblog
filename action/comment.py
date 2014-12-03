@@ -32,7 +32,7 @@ class comment(baseAction):
         self.assign('pageString',pageString)
         return self.display('commentList')
     def delete(self):
-        inputParams = self.getInput()
+        inputParams = self.getPars()
         if not inputParams.has_key('id') :
             settings = self.getSettings()
             web.seeother(settings.WEB_URL)
@@ -40,6 +40,8 @@ class comment(baseAction):
         condition={'id':str(id)}
         result=model.comment().delete(condition)
         if result:
+            ##修改文章评论数
             return self.success('删除成功',self.makeUrl('comment','list'))
         else:
             return self.error('删除失败')
+        

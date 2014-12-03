@@ -16,6 +16,10 @@ class cms(baseAction):
         data={
             'content':self.htmlunquote(userInput['content']),
             'name':userInput['name'],
+            'keywords':userInput['keywords'],
+            'description':userInput['description'],
+            'category':userInput['category'],
+            'tags':userInput['tags'],
             'createTime':date,
             'status':userInput['status'],
             'orders':userInput['orders'],
@@ -32,6 +36,10 @@ class cms(baseAction):
         data={
             'content':self.htmlunquote(userInput['content']),
             'name':userInput['name'],
+            'keywords':userInput['keywords'],
+            'description':userInput['description'],
+            'category':userInput['category'],
+            'tags':userInput['tags'],
             'status':userInput['status'],
             'orders':userInput['orders'],
         }
@@ -59,6 +67,7 @@ class cms(baseAction):
 
     def add(self):
         return self.display('cmsAdd')
+    
     def edit(self):
         inputParams = self.getPars()
         if not inputParams.has_key('id') :
@@ -80,3 +89,4 @@ class cms(baseAction):
             return self.success('删除成功',self.makeUrl('cms','list'))
         else:
             return self.error('删除失败')
+        

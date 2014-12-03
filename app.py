@@ -3,7 +3,7 @@
 import web, settings, traceback
 
 urls = (
-    '([a-z0-9_\/]*)', 'dispatcher'
+    '([a-zA-Z0-9_\%\/]*)', 'dispatcher'
     )
 
 class dispatcher:

@@ -63,6 +63,7 @@ class mysql:
         dv = [str(i) for i in data.values()]
         sql = sql + "','".join(dv)
         sql = sql + "')"
+#         print sql
         status = self.cursor.execute(sql)
         self.conn.commit()
         return status
@@ -73,7 +74,9 @@ class mysql:
                 sql = sql + " AND "+i+"='%s'"
         else:
             sql = sql + condition
-        status = self.cursor.execute(sql, condition.values())
+        sql = sql % tuple(condition.values())
+#         print sql
+        status = self.cursor.execute(sql)
         self.conn.commit()
         return status
     def update(self, tableName, data, condition):
