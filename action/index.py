@@ -127,6 +127,7 @@ class index(baseAction):
         cmsObj.update(updateData,condition)
         commentList=model.comment().getList('*',{'status':1,'cmsId':int(id)})
         atl['categoryList'] = self.getSettings().CATEGORY_LIST
+        atl['tags'] = atl['tags'].split(u'，')
         self.assign('atl',atl)
         self.assign('commentList',commentList)
         self.assignSEO(atl['name'], atl['keywords'], atl['description'])

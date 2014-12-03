@@ -97,7 +97,7 @@ class mysql:
         else:
             sql = sql + condition
         sql = sql % tuple(data.values()+condition.values())
-#         print sql
+        print sql
         status = self.cursor.execute(sql)
         self.conn.commit()
         return status

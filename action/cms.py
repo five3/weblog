@@ -19,7 +19,7 @@ class cms(baseAction):
             'keywords':userInput['keywords'],
             'description':userInput['description'],
             'category':userInput['category'],
-            'tags':userInput['tags'],
+            'tags':userInput['tags'].replace(',', u'，'),
             'createTime':date,
             'status':userInput['status'],
             'orders':userInput['orders'],
@@ -39,7 +39,7 @@ class cms(baseAction):
             'keywords':userInput['keywords'],
             'description':userInput['description'],
             'category':userInput['category'],
-            'tags':userInput['tags'],
+            'tags':userInput['tags'].replace(',', u'，'),
             'status':userInput['status'],
             'orders':userInput['orders'],
         }
