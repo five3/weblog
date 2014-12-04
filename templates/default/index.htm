@@ -8,9 +8,17 @@ $:tplData['render'].header(tplData)
 		$for i in tplData['cmsList']:
 		    <section class="post-$:i['id'] post type-post status-publish format-standard hentry category-$:i['id'] tag-appreciate" id="sectionid-$:i['id']">
 		        <h2><a href="$makeUrl('index','show',{'id':i['id']})">$:i['name']</a></h2>
-		        $subStr(i['content'],1,100)
-		        <small class="meta">$:i['createTime'] | 查看：$:i['views'] | <a href="$makeUrl('index','show',{'id':i['id']})#comments" title="$:i['name']">我要评论($:i['commentCount']个)</a></small>
-		        <p> <a href="$makeUrl('index','show',{'id':i['id']})" class="more-link">查看全文 &raquo;</a></p>
+		        <div class="withNoImg">
+		        	<a class="previewImg">
+		        		<img src="http://p.zdmimg.com/201412/04/548020db73415.jpg_v1.jpg" width="190px" height="178px" style="margin-top:6px" alt="海淘券码：日本亚马逊 精选冬季 服饰鞋包配饰等 专场">
+		        	</a>
+		        	<div class="previewText">
+			        $subStr(i['content'],1,100)
+			       		<p><a href="$makeUrl('index','show',{'id':i['id']})" class="rightButtom">查看详文 &raquo;</a></p>
+			        </div>
+			        <div class="clear"></div>
+		        </div>
+			    <small class="meta">$:i['createTime'] | 查看：$:i['views'] | <a href="$makeUrl('index','show',{'id':i['id']})#comments" title="$:i['name']">我要评论($:i['commentCount']个)</a></small>			        
 		    </section>
 		</article>
 		<nav class="navigation">
