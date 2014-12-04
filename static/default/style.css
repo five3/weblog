@@ -1,4 +1,4 @@
-body,h1,h2,h3,p,blockquote,dl,dt,dd,ul,ol,li,button,input,textarea {margin: 0; padding: 0;}
+body,h1,h2,h3,p,blockquote,dl,dt,dd,ul,ol,li,button,input,textarea {margin: 0; padding: 0; }
 header,footer,article,section,nav,menu,hgroup {display:block;}
 body {font-family:"Hiragino Sans GB","Microsoft Yahei",Tahoma, Helvetica, Arial, "SimSun", sans-serif; line-height:1.6; font-size:16px;}
 h1,h2,h3 {font-weight:400;}
@@ -6,7 +6,7 @@ h1,h2 {font-size:24px;}
 h3 {font-size:18px;}
 img {border:none;}
 a img:hover {background:none; border:none;}
-a {color:#000; text-decoration:none;}
+a {color:#5188a6; text-decoration:none;}
 a:hover {text-decoration:none; cursor: pointer; color: #5188a6;}
 ol,ul {list-style:none;}
 p {margin-bottom:20px;}
@@ -18,24 +18,24 @@ input[type^="radio"] {border:none; background:none; width:auto;}
 ::selection {color:#fff; background:#444; text-shadow:none;}
 code {background:#EFEBEB; border-left:3px dashed rgb(230,230,230); padding:10px 10px 10px 13px; font:12px/1.5 "Hiragino Sans GB",Tahoma,Helvetica,Arial; display:block;}
 #wrap,#footer_box {background:#fff; width:700px; padding:20px 10px; float:left;}
-#content {overflow:hidden; color:#555; text-shadow:0px 0px #fff; clear:both;}
-#header {text-align:center; margin-top: -20px; background: #E7E7E7 url(/static/default/bg3.jpg) no-repeat center; height:300px; width:100%; background-size: cover;}
+#content {overflow:hidden; color:#555; clear:both;}
+#header {text-align:center; margin-top: -50px; background: #eee; height:240px; width:100%; background-size: cover;}
 #logo {margin:20px auto 10px;}
 #logo a {color:#000;}
 #header h2 {font-size:14px;}
-#toolbar {height:30px; font-size:20px; margin:5px auto; width:250px;}
+#toolbar {height:30px; font-size:20px; margin:10px auto; width:250px; float: right; }
 #searchform {background:#fafafa; border:1px solid #ccc; border-radius:15px; box-shadow:inset 1px 1px 5px rgba(100,100,100,.3); padding:3px 5px; height:20px; float:right;}
 #searchform label {display:none;}
 #searchform input {border:none; background:none; box-shadow:none; width:150px; height:20px; line-height:20px; vertical-align:top;}
 #searchform button {background:url(search.png) no-repeat; width:25px; height:25px; text-indent:-999px; vertical-align:top; border:none; cursor:pointer; margin-left:-5px; font-size:0;}
 #searchform button:hover {background:url(search_hover.png) no-repeat;}
-#rss {float:right; margin-left:8px; margin-top:4px;}
+#rss {margin-left:8px; margin-top:4px; display: inline-block; }
 #rss a {background:url(rss.png) no-repeat; width:16px; height:16px; overflow:hidden;display:block; text-indent:-999px;}
-#menu {font-size:20px; line-height:30px; height:30px; overflow:hidden; margin:50px auto; width:1080px;}
+#menu {font-size:20px; line-height:50px; height:50px; overflow:hidden; margin:50px auto; width:100%; background-color: #000; color: #fff;}
 #menu li {float:left; margin-right:20px;}
 #menu a {display:block; text-decoration:none; color:#999;}
 #menu a:hover {color:#5f767f;}
-#menu .current-menu-item a,#menu .current-menu-parent a {color:#444; font-size:30px; line-height:30px;}
+#menu .current-menu-item a,#menu .current-menu-parent a {color:#fff; font-size:25px; line-height:50px;}
 #menu li ul {display:none;}
 #post_list section {border-bottom:1px dashed #bbb; margin-bottom:20px;}
 .meta {font-size:18px; margin-bottom:20px; color:#999; display:block; clear:both;}
@@ -122,3 +122,6 @@ blockquote p:last-child {margin-bottom:0;}
 .withImg .previewText { width: 490px; height: 190px; float: left; }
 .withNoImg .previewImg { width: 190px; height: 190px; float: left; margin-right: 20px; text-align: center; display: none; overflow: hidden; }
 .rightButtom {display: block;  width: 110px; float: right; margin: 30px 10px 0 0; height: 25px;  text-align: center;  line-height: 25px;  background-color: #f04848;  border: 1px solid #f04848;  color: #fff;  -webkit-border-radius: 2px;  -moz-border-radius: 2px;  -ms-border-radius: 2px;  -o-border-radius: 2px;  border-radius: 2px; }
+.blackhref { color:#000; text-decoration:none; }
+a.rightButtom:hover { color:#000; }
+.nav { width:1080px; margin:0px auto;  }
