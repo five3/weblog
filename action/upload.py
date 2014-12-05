@@ -20,7 +20,10 @@ class upload(baseAction):
         if 'uploadFile' in inputParams: # to check if the file-object is created
             filepath=inputParams.uploadFile.filename.replace('\\','/') # replaces the windows-style slashes with linux ones.
             filename=filepath.split('/')[-1] # splits the and chooses the last part (the filename with extension)
-            fout = open(filedir +'/'+ filename,'w') # creates the file where the uploaded file should be stored
+            filename=filename.decode('utf8')
+#             print type(filename)
+#             print filename
+            fout = open(filedir +'/'+ filename, 'wb') # creates the file where the uploaded file should be stored
             fout.write(inputParams.uploadFile.file.read()) # writes the uploaded file to the newly created file.
             fout.close() # closes the file, upload complete.
         self.assign('text',settings.WEB_URL+settings.UPLOAD_DIR+filename)

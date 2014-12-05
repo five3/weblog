@@ -23,6 +23,8 @@ class cms(baseAction):
             'createTime':date,
             'status':userInput['status'],
             'orders':userInput['orders'],
+            'preview_image_src':userInput['preview_image_src'],
+            'direct_buy_url':userInput['direct_buy_url'],
             'views': 0,
             'commentCount':0
         }
@@ -42,6 +44,8 @@ class cms(baseAction):
             'tags':userInput['tags'].replace(',', u'，'),
             'status':userInput['status'],
             'orders':userInput['orders'],
+            'preview_image_src':userInput['preview_image_src'],
+            'direct_buy_url':userInput['direct_buy_url'],
         }
         condition = {'id':userInput['id']}
         status = model.cms().update(data,condition)

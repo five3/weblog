@@ -30,7 +30,7 @@ class index(baseAction):
         unioObj = model.unio() 
         topHotList = unioObj.fetchAll('select id,name,preview_image_src from cms order by views desc limit 0,10')
         self.assign('topHotList', topHotList)  ##最热文章列表 
-        categoryArtList = unioObj.fetchAll('select category as name, count(id) as num from cms order by num desc limit 0,10')
+        categoryArtList = unioObj.fetchAll('select category as name, count(id) as num from cms GROUP BY category order by num desc limit 0,10')
         self.assign('categoryArtList', categoryArtList)  ##分类归档列表  
         tagArtList = []
         self.assign('tagArtList', tagArtList)  ##标签归档列表  
@@ -79,7 +79,7 @@ class index(baseAction):
         unioObj = model.unio() 
         topHotList = unioObj.fetchAll('select id,name,preview_image_src from cms order by views desc limit 0,10')
         self.assign('topHotList', topHotList)  ##最热文章列表 
-        categoryArtList = unioObj.fetchAll('select category as name, count(id) as num from cms order by num desc limit 0,10')
+        categoryArtList = unioObj.fetchAll('select category as name, count(id) as num from cms GROUP BY category order by num desc limit 0,10')
         self.assign('categoryArtList', categoryArtList)  ##分类归档列表  
         tagArtList = []
         self.assign('tagArtList', tagArtList)  ##标签归档列表  
@@ -108,7 +108,7 @@ class index(baseAction):
         unioObj = model.unio() 
         topHotList = unioObj.fetchAll('select id,name,preview_image_src from cms order by views desc limit 0,10')
         self.assign('topHotList', topHotList)  ##最热文章列表 
-        categoryArtList = unioObj.fetchAll('select category as name, count(id) as num from cms order by num desc limit 0,10')
+        categoryArtList = unioObj.fetchAll('select category as name, count(id) as num from cms GROUP BY category order by num desc limit 0,10')
         self.assign('categoryArtList', categoryArtList)  ##分类归档列表  
         tagArtList = []
         self.assign('tagArtList', tagArtList)  ##标签归档列表  
@@ -161,7 +161,7 @@ class index(baseAction):
         unioObj = model.unio() 
         topNewList = unioObj.fetchAll('select cms.id, cms.name, cms.preview_image_src from cms order by createTime desc limit 0,10')
         self.assign('topNewList', topNewList)  ##最新文章列表 
-        categoryArtList = unioObj.fetchAll('select category as name, count(id) as num from cms order by num desc limit 0,10')
+        categoryArtList = unioObj.fetchAll('select category as name, count(id) as num from cms GROUP BY category order by num desc limit 0,10')
         self.assign('categoryArtList', categoryArtList)  ##分类归档列表 
         tagArtList = []
         self.assign('tagArtList', tagArtList)  ##标签归档列表 

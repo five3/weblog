@@ -15,6 +15,14 @@ $:tplData['render'].header()
             <td width="608" scope="col"><textarea style="width:800px; height:60px;" name="description"  id="description" >$:tplData['atl']['description']</textarea></td>
         </tr>  
         <tr>
+            <td width="100" scope="col">预览图片:</td>
+            <td width="608" scope="col"><input name="preview_image_src" type="text" id="preview_image_src" value="$:tplData['atl']['preview_image_src']" /></td>
+        </tr> 
+        <tr>
+            <td width="100" scope="col">直购链接:</td>
+            <td width="608" scope="col"><input name="direct_buy_url" type="text" id="direct_buy_url" value="$:tplData['atl']['direct_buy_url']" /></td>
+        </tr> 
+        <tr>
             <td colspan="2" scope="col">
                 <textarea rows="10" cols="5" name="content" id="content">$:tplData['atl']['content']</textarea>
                 <script type="text/javascript" src="$makeUrl('static','admin/editor/tinyeditor.js')"></script>
