@@ -26,8 +26,17 @@ class index(baseAction):
         self.assign('pageString',pageString)
         commentObj=model.comment()
         commentList = commentObj.getList('*',{'status':1},'id desc',str(offset)+','+str(count))
-        self.assign('commentList',commentList)
-#         print cmsList
+        self.assign('commentList', commentList)  ##评论内容列表 
+        unioObj = model.unio() 
+        topHotList = unioObj.fetchAll('select id,name,preview_image_src from cms order by views desc limit 0,10')
+        self.assign('topHotList', topHotList)  ##最热文章列表 
+        categoryArtList = unioObj.fetchAll('select category as name, count(id) as num from cms order by num desc limit 0,10')
+        self.assign('categoryArtList', categoryArtList)  ##分类归档列表  
+        tagArtList = []
+        self.assign('tagArtList', tagArtList)  ##标签归档列表  
+        lastCommentList = unioObj.fetchAll('select cms.id, `comment`.content as name, cms.preview_image_src from cms, `comment` where cms.id=`comment`.cmsId order by `comment`.createTime desc limit 0,10') 
+        self.assign('lastCommentList', lastCommentList)  ##最新评论列表  
+#         print cmsList      
         return self.display('index')
 
     def tag(self):
@@ -123,7 +132,7 @@ class index(baseAction):
             raise web.notfound('not found')
         atl['views']+=1
         updateData = {'views':(atl['views'])}
-        #view count incr
+        #view count 
         cmsObj.update(updateData,condition)
         commentList=model.comment().getList('*',{'status':1,'cmsId':int(id)})
         atl['categoryList'] = self.getSettings().CATEGORY_LIST
@@ -131,7 +140,16 @@ class index(baseAction):
         self.assign('atl',atl)
         self.assign('commentList',commentList)
         self.assignSEO(atl['name'], atl['keywords'], atl['description'])
-        return self.display('show')
+        unioObj = model.unio() 
+        topNewList = unioObj.fetchAll('select cms.id, cms.name, cms.preview_image_src from cms order by createTime desc limit 0,10')
+        self.assign('topNewList', topNewList)  ##最新文章列表 
+        categoryArtList = unioObj.fetchAll('select category as name, count(id) as num from cms order by num desc limit 0,10')
+        self.assign('categoryArtList', categoryArtList)  ##分类归档列表 
+        tagArtList = []
+        self.assign('tagArtList', tagArtList)  ##标签归档列表 
+        dateArtList = []
+        self.assign('dateArtList', dateArtList)  ##日期归档列表 
+        return self.display('show')  
     
     def comment(self):
         userInput= self.getInput()

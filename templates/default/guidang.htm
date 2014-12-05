@@ -1,0 +1,15 @@
+$def with (listData, name)
+$if listData:
+	<div class="widget">
+		<h2>$name <a style="display:none;" href="">更多 &gt;</a></h2>
+		<ul class="rightHotExp">
+	        <!-- listCurrent-->
+	        $for i in listData:
+	            <li class="listItem">
+	            	<div class="listInfo">
+	                    <div class="itemName"><a href="${makeUrl('index', i['name'])}" target="_blank" >${i['name']}&nbsp;($i['num'])</a></div>
+	                </div>
+	            </li>
+	        <!-- listCurrent end-->
+	    </ul>
+	</div>

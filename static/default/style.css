@@ -16,7 +16,7 @@ input:focus,textarea:focus {background:#fff; border-color:#999;}
 input {vertical-align:middle;}
 input[type^="radio"] {border:none; background:none; width:auto;}
 ::selection {color:#fff; background:#444; text-shadow:none;}
-code {background:#EFEBEB; border-left:3px dashed rgb(230,230,230); padding:10px 10px 10px 13px; font:12px/1.5 "Hiragino Sans GB",Tahoma,Helvetica,Arial; display:block;}
+code {background:#EFEBEB; border-left:3px dashed rgb(230,230,230); padding:10px 10px 10px 13px; font:16px/1.5 "Hiragino Sans GB",Tahoma,Helvetica,Arial; display:block;}
 #wrap,#footer_box {background:#fff; width:700px; padding:20px 10px; float:left;}
 #content {overflow:hidden; color:#555; clear:both;}
 #header {text-align:center; margin-top: -50px; background: #eee; height:240px; width:100%; background-size: cover;}
@@ -38,7 +38,7 @@ code {background:#EFEBEB; border-left:3px dashed rgb(230,230,230); padding:10px 
 #menu .current-menu-item a,#menu .current-menu-parent a {color:#fff; font-size:25px; line-height:50px;}
 #menu li ul {display:none;}
 #post_list section {border-bottom:1px dashed #bbb; margin-bottom:20px;}
-.meta {font-size:18px; margin-bottom:20px; color:#999; display:block; clear:both;}
+.meta {font-size:18px; margin:20px 0; color:#999; display:block; clear:both;}
 #post_content {padding-top:10px;}
 .post,.page {font-size:18px;letter-spacing:1px;}
 .page h1 {margin-bottom:20px;}
@@ -108,12 +108,13 @@ blockquote p:last-child {margin-bottom:0;}
 #side{width:300px; padding: 20px 10px; float:left;}
 .widget {margin-bottom: 35px;}
 .widget  h2 a, .rfloat {display: block; float: right; font-size: 12px; color: #5188a6; font-weight: normal; font-family: "SimSun";}
-.listItem {padding-top: 16px; height: 16px; verflow: hidden;}
+.listItem {padding-top: 5px; height: 25px; overflow: hidden;}
 .listItem .smallPic, .listItem span.grey, .listItem .listBot, .listItem .couponBtn { display: none;}
-.listItem .listInfo .itemName a { font-size: 12px; color: #666; height: 20px; display: block; width: 300px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
-.itemName { font-weight: normal; font-size: 12px; }
+.listItem .listInfo .itemName a { font-size: 16px; color: #666; height: 25px; display: block; width: 300px; white-space: nowrap; text-overflow: ellipsis; overflow: hidden; }
+.itemName { font-weight: normal; font-size: 16px; }
+.widget a:hover { text-decoration:none; cursor: pointer; color: #5188a6; }
 .listCurrent {padding-top: 16px; height: 80px; overflow: hidden;}
-.listCurrent .listInfo { width: 200px; float: right; font-size: 12px; line-height: 20px; position: relative; height: 80px; }
+.listCurrent .listInfo { width: 200px; float: right; font-size: 14px; line-height: 20px; position: relative; height: 80px; }
 .listCurrent .couponBtn {display: block;  width: 33px;  height: 18px;  text-align: center;  line-height: 18px;  position: absolute;  right: 0;  bottom: 0;  background-color: #f04848;  border: 1px solid #f04848;  color: #fff;  -webkit-border-radius: 2px;  -moz-border-radius: 2px;  -ms-border-radius: 2px;  -o-border-radius: 2px;  border-radius: 2px; }
 .grey { color: #999; }
 .listCurrent .smallPic { float: left; display: block; width: 78px; height: 77px; border: 1px solid #dcdcdc; text-align: center; }

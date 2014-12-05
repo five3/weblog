@@ -26,16 +26,16 @@ $:tplData['render'].header(tplData)
 	<!-- 相关推荐 -->
 
 	<!-- 广告位 -->
-	
+		<a name="#comment"></a>
 	    $:tplData['render'].comments(tplData)
 	    
 	</div>
 </div>  <!-- wrap end -->
 <div id="side">
-	$:tplData['render'].widget(tplData, '最新文章')
-	$:tplData['render'].widget(tplData, '文章分类')
+	$:tplData['render'].widget(tplData.get('topNewList'), '最新文章')
+	$:tplData['render'].guidang(tplData.get('categoryArtList'), '文章归档')
 	<!-- 广告位 -->
-	$:tplData['render'].widget(tplData, '标签归档')
-	$:tplData['render'].widget(tplData, '日期归档')
+	$:tplData['render'].guidang(tplData.get('tagArtList'), '标签归档')
+	$:tplData['render'].guidang(tplData.get('dateArtList'), '日期归档')
 </div>
 $:tplData['render'].footer(tplData)

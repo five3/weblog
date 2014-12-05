@@ -23,3 +23,13 @@ class base:
 
     def update(self, data,condition):
         return self.getDb().update(self.getTable(),data,condition)
+    
+    def execute(self, sql):
+        return self.getDb().execute(sql)
+    
+    def fetchOne(self, sql):
+        return self.getDb().fetchOne(sql)
+    
+    def fetchAll(self, sql):
+        return self.getDb().fetchAll(sql)
+    

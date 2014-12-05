@@ -23,6 +23,10 @@ class database :
     def fetchOne(self,sql):
         return self.dbObj.fetchOne(sql)
 
+    def execute(self,sql):
+#         print sql
+        return self.dbObj.execute(sql)
+
     def insert(self,tableName, data):
         return self.dbObj.insert(tableName,data)
 
@@ -31,10 +35,6 @@ class database :
 
     def update(self, tableName, data,condition):
         return self.dbObj.update(tableName,data,condition)
-
-    def execute(self,sql):
-#         print sql
-        return self.dbObj.execute(sql)
 
     def getList(self,tableName,colums,condition,orders='',limits=''):
         return self.dbObj.getList(tableName,colums,condition,orders,limits)

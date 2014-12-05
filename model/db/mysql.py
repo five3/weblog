@@ -21,7 +21,9 @@ class mysql:
 
     def fetchAll(self, sql,data=[]):
         result = []
-        if self.cursor.execute(sql,data):
+        sql = sql % tuple(data)
+#         print sql 
+        if self.cursor.execute(sql):
             result = self.cursor.fetchall()
         return result
     def fetchOne(self, sql,data=[]):
