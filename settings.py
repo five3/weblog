@@ -18,7 +18,7 @@ ADMIN_PASSWORD='chenxiaowu'
 #项目配置
 DEFAULT_PATH='/index/index'
 DEBUG_SWITCH=True
-CATEGORY_LIST = {'default':'默认分类', 'seo':'SEO', 'life':'生活'}
+CATEGORY_LIST = {'default':'默认分类', 'seo':'SEO', 'life':'生活', 'reading': '阅读'}
 STATUS_LIST = {1:'发布',0:'草稿'}
 
 #路径信息
