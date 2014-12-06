@@ -126,3 +126,4 @@ blockquote p:last-child {margin-bottom:0;}
 .blackhref { color:#000; text-decoration:none; }
 a.rightButtom:hover { color:#000; }
 .nav { width:1080px; margin:0px auto;  }
+#leftside { width:200px; padding: 20px 10px; float:left; }

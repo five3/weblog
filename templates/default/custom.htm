@@ -1,0 +1,16 @@
+﻿$def with (tplData)
+$:tplData['render'].header(tplData)
+	<div id="leftside">
+		<!-- 广告位 -->
+		$:tplData['render'].leftside(tplData.get('leftsideList'), '')
+		<!-- 广告位 -->
+	</div>
+	<div id="wrap">
+		<!-- 轮播主题  -->
+		
+		<div id="content">
+			$:tplData['content']
+		</div>
+	</div>  <!-- wrap end -->
+
+$:tplData['render'].footer(tplData)
