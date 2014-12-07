@@ -1,0 +1,44 @@
+﻿$def with (tplData)
+$:tplData['render'].header(tplData)
+	<div id="wrap">
+		<!-- 轮播主题  -->
+		
+		<div id="content">
+		<article id="post_list">
+		$for i in tplData['cmsList']:
+			$if i['preview_image_src']:
+				$ section_style = 'withImg'
+			$else:
+				$ section_style = 'withNoImg'
+		    <section class="post-$:i['id'] post type-post status-publish format-standard hentry category-$:i['id'] tag-appreciate" id="sectionid-$:i['id']">
+		        <h2><a target="_blank"  href="$makeUrl('index','show',{'id':i['id']})"  class="blackhref">$:i['name']</a></h2>
+		        <div class="$section_style">
+		        	<a class="previewImg">
+		        		<img src="$i['preview_image_src']" width="190px" height="178px" style="margin-top:6px" alt="海淘券码：日本亚马逊 精选冬季 服饰鞋包配饰等 专场">
+		        	</a>
+		        	<div class="previewText">
+			        $subStr(i['content'],1,100)
+			        $if i['direct_buy_url']:
+			        	<p><a target="_blank"  href="$i['direct_buy_url']" class="rightButtom">直接购买 &raquo;</a></p>
+			        $else:
+			       		<p><a target="_blank"  href="$makeUrl('index','show',{'id':i['id']})" class="rightButtom">查看详文 &raquo;</a></p>
+			        </div>
+			        <div class="clear"></div>
+		        </div>
+			    <small class="meta">$:i['createTime'] | 查看：$:i['views'] | <a href="$makeUrl('index','show',{'id':i['id']})#comments" title="$:i['name']">我要评论($:i['commentCount']个)</a></small>			        
+		    </section>
+		</article>
+		<nav class="navigation">
+		$:tplData['pageString']
+		</nav>
+		</div>
+	</div>  <!-- wrap end -->
+	<div id="side">
+		<!-- 广告位 -->
+		$:tplData['render'].widget(tplData.get('topHotList'), '最热文章')
+		$:tplData['render'].guidang(tplData.get('categoryArtList'), '分类归档')
+		$:tplData['render'].guidang(tplData.get('tagArtList'), '标签归档')
+		$:tplData['render'].widget(tplData.get('lastCommentList'), '最新评论')
+		<!-- 广告位 -->
+	</div>
+$:tplData['render'].footer(tplData)

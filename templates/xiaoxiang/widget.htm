@@ -1,0 +1,18 @@
+$def with (listData, name)
+$if listData:
+	<div class="widget">
+		<h2>$name <a style="display:none;" href="">更多 &gt;</a></h2>
+		<ul class="rightHotExp">
+	        <!-- listCurrent-->
+	        $for i in listData:
+	            <li class="listItem">
+	                <a href="" class="smallPic" target="_blank" ><img src="$i['preview_image_src']" alt="$i['name']" height="39" width="78" style="margin-top:20px"></a>
+	                <div class="listInfo">
+	                    <div class="itemName"><a href="$makeUrl('index','show',{'id':i['id']})" target="_blank" >$i['name']</a></div>
+	                    <span class="grey">已售: 4570 张</span>
+	                    <a href="" class="couponBtn" target="_blank" >购买</a>
+	                </div>
+	            </li>
+	        <!-- listCurrent end-->
+	    </ul>
+	</div>

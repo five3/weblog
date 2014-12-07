@@ -1,0 +1,63 @@
+$def with (tplData)
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head profile="http://gmpg.org/xfn/11">
+    <meta charset="UTF-8" />
+    <title>$:tplData['webTitle'] - $:tplData['webName']</title>
+    <link rel="stylesheet" href="${makeUrl('static', tplData['template_theme']+'/style.css')}" />
+    <link rel="alternate" type="application/rss+xml" title=" RSS Feed" href="$makeUrl('rss')" />
+    <script type="text/javascript" src="${makeUrl('static', tplData['template_theme']+'/bin.js')}"></script>
+    <link rel="shortcut icon" href="${makeUrl('static', tplData['template_theme']+'/favicon.ico')}">
+    <!--[if IE]>
+    <script src="$makeUrl('static','default/html5.js')"></script>
+    <![endif]-->
+    <meta name="baidu-site-verification" content="HAHkTXTeoZ" />
+    <meta name="keywords" content="$:tplData['webKeywords']" />
+    <meta name="description" content="$:tplData['webDescription']" />
+</head>
+<body>
+<header id="header">
+    <nav id="menu">
+    	<div class="nav"><ul id="menu-header" >
+	    <li id="menu-item-0" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-0">
+	        <a href="$makeUrl('index')">首页</a>
+	    </li>
+	    <li id="menu-item-0" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-0">
+	        <a href="$makeUrl('xuyuan', 'index')">许愿</a>
+	    </li>	    
+	    <li id="menu-item-0" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-0">
+	        <a href="$makeUrl('xuyuan', 'huanyuan')">还愿</a>
+	    </li>	    
+	    <li id="menu-item-0" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-0">
+	        <a href="$makeUrl('songli', 'index' , {'category': 'forman'})">送男生</a>
+	    </li>	    
+	    <li id="menu-item-0" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-0">
+	        <a href="$makeUrl('songli', 'index', {'category': 'forwomen'})">送女生</a>
+	    </li>
+	    <li id="menu-item-0" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-0">
+	        <a href="$makeUrl('songli', 'index', {'category': 'shengri'})">生日礼物</a>
+	    </li>
+	    <li id="menu-item-0" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-0">
+	        <a href="$makeUrl('person', 'index')">我的</a>
+	    </li>
+    </ul>
+    <div id="toolbar">
+	        <form id="searchform" method="get" action="http://www.baidu.com/s" target="_blank">
+	 			<input  type="hidden" value="" name="wd" id="searchText" /> 
+	            <input type="text" value="" name="s" id="s" size="30" placeholder="试试手气！" autocomplete="off" required onkeyup="document.getElementById('searchText').value=this.value + ' site:chenxiaowu.com'" />
+	            <button type="submit">试试手气！</button>
+	        </form>
+    </div>        
+    </div>
+
+    </nav>
+    <hgroup style="padding-top: 0px;">
+        <div id="logo" style="font-size:30px;"><a href="/">$:tplData['webName']</a><div id="rss"><a target="_blank" href="$makeUrl('rss')" title="RSS Feed">RSS</a></div></div>
+        <div style="font-size:20px;">$:tplData['webSubname']</div>       
+    </hgroup>
+
+</header>
+<div id="main">
+
+
+

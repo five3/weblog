@@ -19,7 +19,8 @@ class base:
             'webKeywords' : self.settings.WEB_KEYWORDS,
             'webDescription' : self.settings.WEB_DESCRIPTION,
             'statusList':self.settings.STATUS_LIST,
-            'categoryList':self.settings.CATEGORY_LIST
+            'categoryList':self.settings.CATEGORY_LIST,
+            'template_theme': self.settings.TEMPLATE_THEME
         }
         self.globalsTplFuncs = {}
         self.tplDir = ''
