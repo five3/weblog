@@ -2,6 +2,8 @@
 #!/usr/bin/env python
 import web, time,math
 import settings
+import model
+
 class base:
     tplData = {}
     globalsTplFuncs = {}
@@ -11,6 +13,7 @@ class base:
     errorMessage = ''
     def __init__(self, pars=''):
         self.settings = settings
+        
         self.tplData = {
             'webUrl' : self.settings.WEB_URL,
             'webName' : self.settings.WEB_NAME,
@@ -19,7 +22,7 @@ class base:
             'webKeywords' : self.settings.WEB_KEYWORDS,
             'webDescription' : self.settings.WEB_DESCRIPTION,
             'statusList':self.settings.STATUS_LIST,
-            'categoryList':self.settings.CATEGORY_LIST,
+            'categoryList': self.getCate(),
             'template_theme': self.settings.TEMPLATE_THEME
         }
         self.globalsTplFuncs = {}
@@ -166,5 +169,11 @@ class base:
 #         print self.pars
         par_list = self.pars.split('/') if self.pars else []
         pars_dict = dict([i.split('_') for i in par_list])
-        return pars_dict
-    
+        return pars_dict    
+    def getCate(self):
+        result = model.category().getList('*', {})
+        if result:
+            return result
+        else:
+            return {}
+        

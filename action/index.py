@@ -18,6 +18,8 @@ class index(baseAction):
         offset= (page-1)*count if page > 0 else 0
         cmsObj = model.cms()
         condition = {'status':1}
+        if 'category' in inputParams:
+            condition['category'] = inputParams['category']
         listData = cmsObj.getOne('COUNT(*) AS `total`',condition)
         totalCount = listData['total']
         cmsList = cmsObj.getList('*',condition,'orders desc,createTime desc',str(offset)+','+str(count))
@@ -30,7 +32,7 @@ class index(baseAction):
         unioObj = model.unio() 
         topHotList = unioObj.fetchAll('select id,name,preview_image_src from cms order by views desc limit 0,10')
         self.assign('topHotList', topHotList)  ##最热文章列表 
-        categoryArtList = unioObj.fetchAll('select category as name, count(id) as num from cms GROUP BY category order by num desc limit 0,10')
+        categoryArtList = unioObj.fetchAll('select category.id, category.name, count(cms.id) as num from cms,category where category.id=cms.category GROUP BY cms.category order by num desc limit 0,10')
         self.assign('categoryArtList', categoryArtList)  ##分类归档列表  
         tagArtList = []
         self.assign('tagArtList', tagArtList)  ##标签归档列表  
@@ -59,84 +61,6 @@ class index(baseAction):
 #         print cmsList
         return self.display('index')
     
-    def seo(self):
-        settings = self.getSettings()
-        count = settings.PER_PAGE_COUNT
-        inputParams = self.getPars()
-        page = int(inputParams['page']) if inputParams.has_key('page') else 1
-        offset= (page-1)*count if page > 0 else 0
-        cmsObj = model.cms()
-        condition = {'status':1, 'category': 'seo'}
-        listData = cmsObj.getOne('COUNT(*) AS `total`',condition)
-        totalCount = listData['total']
-        cmsList = cmsObj.getList('*',condition,'orders desc,createTime desc',str(offset)+','+str(count))
-        self.assign('cmsList',cmsList)
-        pageString = self.getPageStr(self.makeUrl('index','index'),page,count,totalCount)
-        self.assign('pageString',pageString)
-        commentObj=model.comment()
-        commentList = commentObj.getList('*',{'status':1},'id desc',str(offset)+','+str(count))
-        self.assign('commentList',commentList)
-        unioObj = model.unio() 
-        topHotList = unioObj.fetchAll('select id,name,preview_image_src from cms order by views desc limit 0,10')
-        self.assign('topHotList', topHotList)  ##最热文章列表 
-        categoryArtList = unioObj.fetchAll('select category as name, count(id) as num from cms GROUP BY category order by num desc limit 0,10')
-        self.assign('categoryArtList', categoryArtList)  ##分类归档列表  
-        tagArtList = []
-        self.assign('tagArtList', tagArtList)  ##标签归档列表  
-        lastCommentList = unioObj.fetchAll('select cms.id, `comment`.content as name, cms.preview_image_src from cms, `comment` where cms.id=`comment`.cmsId order by `comment`.createTime desc limit 0,10') 
-        self.assign('lastCommentList', lastCommentList)  ##最新评论列表  
-#         print cmsList
-        return self.display('index')
-    
-    def life(self):
-        settings = self.getSettings()
-        count = settings.PER_PAGE_COUNT
-        inputParams = self.getPars()
-        page = int(inputParams['page']) if inputParams.has_key('page') else 1
-        offset= (page-1)*count if page > 0 else 0
-        cmsObj = model.cms()
-        condition = {'status':1, 'category': 'life'}
-        listData = cmsObj.getOne('COUNT(*) AS `total`',condition)
-        totalCount = listData['total']
-        cmsList = cmsObj.getList('*',condition,'orders desc,createTime desc',str(offset)+','+str(count))
-        self.assign('cmsList',cmsList)
-        pageString = self.getPageStr(self.makeUrl('index','index'),page,count,totalCount)
-        self.assign('pageString',pageString)
-        commentObj=model.comment()
-        commentList = commentObj.getList('*',{'status':1},'id desc',str(offset)+','+str(count))
-        self.assign('commentList',commentList)
-        unioObj = model.unio() 
-        topHotList = unioObj.fetchAll('select id,name,preview_image_src from cms order by views desc limit 0,10')
-        self.assign('topHotList', topHotList)  ##最热文章列表 
-        categoryArtList = unioObj.fetchAll('select category as name, count(id) as num from cms GROUP BY category order by num desc limit 0,10')
-        self.assign('categoryArtList', categoryArtList)  ##分类归档列表  
-        tagArtList = []
-        self.assign('tagArtList', tagArtList)  ##标签归档列表  
-        lastCommentList = unioObj.fetchAll('select cms.id, `comment`.content as name, cms.preview_image_src from cms, `comment` where cms.id=`comment`.cmsId order by `comment`.createTime desc limit 0,10') 
-        self.assign('lastCommentList', lastCommentList)  ##最新评论列表  
-#         print cmsList
-        return self.display('index')
-    
-    def reading(self):
-        settings = self.getSettings()
-        count = settings.PER_PAGE_COUNT
-        inputParams = self.getPars()
-        page = int(inputParams['page']) if inputParams.has_key('page') else 1
-        offset= (page-1)*count if page > 0 else 0
-        cmsObj = model.cms()
-        condition = {'status':1, 'category': 'reading'}
-        listData = cmsObj.getOne('COUNT(*) AS `total`',condition)
-        totalCount = listData['total']
-        cmsList = cmsObj.getList('*',condition,'orders desc,createTime desc',str(offset)+','+str(count))
-        self.assign('cmsList',cmsList)
-        pageString = self.getPageStr(self.makeUrl('index','index'),page,count,totalCount)
-        self.assign('pageString',pageString)
-        commentObj=model.comment()
-        commentList = commentObj.getList('*',{'status':1},'id desc',str(offset)+','+str(count))
-        self.assign('commentList',commentList)
-#         print cmsList
-        return self.display('index')
-    
     def show(self):
         inputParams = self.getPars()
         if not inputParams.has_key('id') :
@@ -153,7 +77,7 @@ class index(baseAction):
         #view count 
         cmsObj.update(updateData,condition)
         commentList=model.comment().getList('*',{'status':1,'cmsId':int(id)})
-        atl['categoryList'] = self.getSettings().CATEGORY_LIST
+        atl['categoryList'] = dict([(d['id'], d['name']) for d in self.getCate()])
         atl['tags'] = atl['tags'].split(u'，')
         self.assign('atl',atl)
         self.assign('commentList',commentList)
@@ -161,7 +85,7 @@ class index(baseAction):
         unioObj = model.unio() 
         topNewList = unioObj.fetchAll('select cms.id, cms.name, cms.preview_image_src from cms order by createTime desc limit 0,10')
         self.assign('topNewList', topNewList)  ##最新文章列表 
-        categoryArtList = unioObj.fetchAll('select category as name, count(id) as num from cms GROUP BY category order by num desc limit 0,10')
+        categoryArtList = unioObj.fetchAll('select category.id, category.name, count(cms.id) as num from cms,category where category.id=cms.category GROUP BY cms.category order by num desc limit 0,10')
         self.assign('categoryArtList', categoryArtList)  ##分类归档列表 
         tagArtList = []
         self.assign('tagArtList', tagArtList)  ##标签归档列表 

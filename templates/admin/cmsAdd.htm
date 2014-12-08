@@ -85,12 +85,14 @@ $:tplData['render'].header()
         <tr>
             <td scope="col">分类:</td>
             <td scope="col">
-                <SELECT  name="category" id="category">
-                    $for k,v in tplData['categoryList'].items():
-                    <option value="$:k"
-                    $if k == 1:
-                        selected="selected"
-                    >$:v</option>
+            	<SELECT  name="category" id="category"> 
+            	$ k = 0              
+				$for l in tplData['categoryList']:
+					<option value="$:l.get('id')"
+					$if k == 0:
+					    selected="selected"
+					>$:l.get('name')</option>
+					$ k += 1
                 </SELECT>
         </tr>
         <tr>
