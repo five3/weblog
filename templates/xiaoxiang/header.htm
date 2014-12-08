@@ -21,13 +21,13 @@ $def with (tplData)
     	<div class="nav"><ul id="menu-header" >
 	    <li id="menu-item-0" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-0">
 	        <a href="$makeUrl('index')">首页</a>
-	    </li>
+	    </li><!-- 
 	    <li id="menu-item-0" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-0">
 	        <a href="$makeUrl('xuyuan', 'index')">许愿</a>
 	    </li>	    
 	    <li id="menu-item-0" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-0">
 	        <a href="$makeUrl('xuyuan', 'huanyuan')">还愿</a>
-	    </li>	    
+	    </li>	     -->
 	    <li id="menu-item-0" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-0">
 	        <a href="$makeUrl('songli', 'index' , {'category': 'forman'})">送男生</a>
 	    </li>	    
@@ -36,26 +36,36 @@ $def with (tplData)
 	    </li>
 	    <li id="menu-item-0" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-0">
 	        <a href="$makeUrl('songli', 'index', {'category': 'shengri'})">生日礼物</a>
-	    </li>
+	    </li><!-- 
 	    <li id="menu-item-0" class="menu-item menu-item-type-custom menu-item-object-custom current-menu-item current_page_item menu-item-home menu-item-0">
 	        <a href="$makeUrl('person', 'index')">我的</a>
-	    </li>
-    </ul>
-    <div id="toolbar">
-	        <form id="searchform" method="get" action="http://www.baidu.com/s" target="_blank">
-	 			<input  type="hidden" value="" name="wd" id="searchText" /> 
-	            <input type="text" value="" name="s" id="s" size="30" placeholder="试试手气！" autocomplete="off" required onkeyup="document.getElementById('searchText').value=this.value + ' site:91xiaoxiang.com'" />
-	            <button type="submit">试试手气！</button>
-	        </form>
-    </div>        
+	    </li>   -->
+    </ul>    
+    <div class="alignright">
+    	<ul>
+	    	<li><a class="nav-link">登录</a></li>    	
+			<li><a class="nav-link">注册</a></li>
+			</ul>
+    </div>   
     </div>
-
     </nav>
-    <hgroup style="padding-top: 0px;">
-        <div id="logo" style="font-size:30px;"><a href="/">$:tplData['webName']</a><div id="rss"><a target="_blank" href="$makeUrl('rss')" title="RSS Feed">RSS</a></div></div>
-        <div style="font-size:20px;">$:tplData['webSubname']</div>       
-    </hgroup>
-
+	<div class="xx-detail">
+          <img class="alignright" src="http://img1.i.kadang.cn/static/mall/index/kdDes.png">
+          <div class="header-mid alignright">
+	          <form class="lay-search" method="get" action="http://www.baidu.com/s" target="_blank">
+	                <input type="hidden" id="log_search_word" name="wd" value="">
+	                <input type="text" class="textinput" id="s" value="" name="s" maxlength="60" placeholder="搜索" required onkeyup="document.getElementById('log_search_word').value=this.value + ' site:91xiaoxiang.com'" / >
+	                <input type="submit" value="搜索" class="search-button" id="keywordBtn">
+	          </form>
+	          <div class="search-tab">
+	                  <a style="color:#f45e4b" target="_blank" href="" wbury="1">创意礼物</a>
+	                  <a target="_blank" href="" wbury="1">送女生礼物</a>
+	                  <a target="_blank" href="" wbury="1">情侣成对礼物</a>
+	          </div>
+          </div>
+          <a kdref="365" href="" target="_blank" wbury="1"><img src="http://img4.i.kadang.cn//upload/1/adv/b5b80f63f0d4190fcfb208f0acfb5885.gif" alt="LOGO右边-氛围图" width="150" height="70"></a>
+	</div>
+	<hr/>
 </header>
 <div id="main">
 

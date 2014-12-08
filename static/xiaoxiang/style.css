@@ -11,7 +11,7 @@ a:hover {text-decoration:none; cursor: pointer; color: #5188a6;}
 ol,ul {list-style:none;}
 p {margin-bottom:20px;}
 input,textarea,button {outline:none;}
-input[type^="text"],input[type^="password"],textarea {box-shadow:inset 2px 3px 5px #eee; border:1px solid #bbb; background:#fafafa;}
+input[type^="text"],input[type^="password"],textarea {box-shadow:inset 2px 3px 5px #eee; border:1px solid #bbb; background:#fff;}
 input:focus,textarea:focus {background:#fff; border-color:#999;}
 input {vertical-align:middle;}
 input[type^="radio"] {border:none; background:none; width:auto;}
@@ -19,23 +19,23 @@ input[type^="radio"] {border:none; background:none; width:auto;}
 code {background:#EFEBEB; border-left:3px dashed rgb(230,230,230); padding:10px 10px 10px 13px; font:16px/1.5 "Hiragino Sans GB",Tahoma,Helvetica,Arial; display:block;}
 #wrap,#footer_box {background:#fff; width:700px; padding:20px 10px; float:left;}
 #content {overflow:hidden; color:#555; clear:both;}
-#header {text-align:center; margin-top: -50px; background: #eee; height:240px; width:100%; background-size: cover;}
+#header {margin-top: 30px; background: #fff; height:auto; width:100%; background-size: cover;}
 #logo {margin:20px auto 10px;}
 #logo a {color:#000;}
 #header h2 {font-size:14px;}
-#toolbar {height:30px; font-size:20px; margin:10px auto; width:250px; float: right; }
-#searchform {background:#fafafa; border:1px solid #ccc; border-radius:15px; box-shadow:inset 1px 1px 5px rgba(100,100,100,.3); padding:3px 5px; height:20px; float:right;}
+#toolbar {height:30px; font-size:20px; margin:0px auto; width:250px; float: right; }
+#searchform {background:#fafafa; border:1px solid #ccc; margin-top: 2px; border-radius: 3px; border: 1px solid #dcdcdc; padding:3px 5px; height:16px; float:right; }
 #searchform label {display:none;}
 #searchform input {border:none; background:none; box-shadow:none; width:150px; height:20px; line-height:20px; vertical-align:top;}
 #searchform button {background:url(search.png) no-repeat; width:25px; height:25px; text-indent:-999px; vertical-align:top; border:none; cursor:pointer; margin-left:-5px; font-size:0;}
 #searchform button:hover {background:url(search_hover.png) no-repeat;}
 #rss {margin-left:8px; margin-top:4px; display: inline-block; }
 #rss a {background:url(rss.png) no-repeat; width:16px; height:16px; overflow:hidden;display:block; text-indent:-999px;}
-#menu {font-size:20px; line-height:50px; height:50px; overflow:hidden; margin:50px auto; width:100%; background-color: #000; color: #fff;}
-#menu li {float:left; margin-right:20px;}
+#menu {overflow:hidden; width:100%; background-color: #333; color: #ccc;position: fixed; top: 0; left: 0; z-index: 100; -webkit-transform: translate3d(0,0,0);}
+#menu li {float:left; margin-right:18px;}
 #menu a {display:block; text-decoration:none; color:#999;}
 #menu a:hover {color:#5f767f;}
-#menu .current-menu-item a,#menu .current-menu-parent a {color:#fff; font-size:25px; line-height:50px;}
+#menu .current-menu-item a,#menu .current-menu-parent a, .nav-link {color:#ccc; font-size:18px; line-height:30px;}
 #menu li ul {display:none;}
 #post_list section {border-bottom:1px dashed #bbb; margin-bottom:20px;}
 .meta {font-size:18px; margin:20px 0; color:#999; display:block; clear:both;}
@@ -127,3 +127,53 @@ blockquote p:last-child {margin-bottom:0;}
 a.rightButtom:hover { color:#000; }
 .nav { width:1080px; margin:0px auto;  }
 #leftside { width:200px; padding: 20px 10px; float:left; }
+.xx-detail {
+padding-top: 20px;
+width: 1080px;
+margin: 0px auto;
+}
+.lay-search {
+width: 350px;
+background: url(/static/xiaoxiang/search.png) no-repeat;
+overflow: hidden;
+}
+.lay-search .textinput {
+padding-left: 20px;
+height: 30px;
+line-height: normal;
+line-height: 30px\9;
+border: 0;
+outline: none;
+background: none;
+width: 90%;
+float: left;
+margin: 3px 0 0 3px;
+-moz-border-radius: 50px;
+-webkit-border-radius: 50px;
+border-radius: 50px;
+box-shadow: inset 2px 3px 5px #fff;
+}
+.lay-search .search-button {
+float: right;
+cursor: pointer;
+width: 40px;
+height: 36px;
+margin-left: -40px;
+border: 0;
+overflow: hidden;
+text-indent: -999em;
+background: url(/static/xiaoxiang/search.png) right 0 no-repeat;
+}
+.search-tab {
+padding-top: 5px;
+}
+.header-mid {
+margin-right: 55px;
+}
+.search-tab a, .search-tab a:hover, .search-tab a:visited, .search-tab a:active {
+padding-left: 20px;
+text-decoration: none;
+color: #000;
+}
+#menu .nav-link {color:#ccc;}
+.search-tab 

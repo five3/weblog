@@ -14,14 +14,17 @@ $:tplData['render'].header(tplData)
 		        <h2><a target="_blank"  href="$makeUrl('index','show',{'id':i['id']})"  class="blackhref">$:i['name']</a></h2>
 		        <div class="$section_style">
 		        	<a class="previewImg">
-		        		<img src="$i['preview_image_src']" width="190px" height="178px" style="margin-top:6px" alt="海淘券码：日本亚马逊 精选冬季 服饰鞋包配饰等 专场">
+		        		<img src="$i['preview_image_src']" width="190px" height="178px" style="margin-top:6px" alt="$i['name']">
 		        	</a>
 		        	<div class="previewText">
 			        $subStr(i['content'],1,100)
+			        <a target="_blank"  href="$makeUrl('index','show',{'id':i['id']})" >查看详文 &raquo;</a>
 			        $if i['direct_buy_url']:
-			        	<p><a target="_blank"  href="$i['direct_buy_url']" class="rightButtom">直接购买 &raquo;</a></p>
-			        $else:
-			       		<p><a target="_blank"  href="$makeUrl('index','show',{'id':i['id']})" class="rightButtom">查看详文 &raquo;</a></p>
+			        	<p>
+			        	<a target="_blank"  href="$makeUrl('index','show',{'id':i['id']})" >赞</a>
+			        	<a target="_blank"  href="$makeUrl('index','show',{'id':i['id']})" >收藏</a>
+			        	<a target="_blank"  href="$i['direct_buy_url']" class="rightButtom">直接购买 &raquo;</a>
+			        	</p>
 			        </div>
 			        <div class="clear"></div>
 		        </div>
