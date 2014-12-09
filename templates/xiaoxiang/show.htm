@@ -9,14 +9,29 @@ $:tplData['render'].header(tplData)
 	<!-- 广告位 -->
 	
 	$:tplData['atl']['content']
-	
-	<small class="meta"> 查看：$:tplData['atl']['views'] 
+
+	<small class="meta"> 
+	<span class="buyit">	
+		$ id = tplData['atl']['id']
+	    <a href="javascript:void(0);" class="good" id="up_$id" onclick="upit($id);" >
+		<span class="scoreTotal"><b>赞</b><em>$tplData['atl']['up']</em></span>
+		<span class="scoredInfo">已赞</span>
+		<span class="scoreAnimate">+1</span>
+		</a>
+		<!--  
+		<a href="javascript:void(0);" class="good" id="" >
+			<span class="scoreTotal"><b>收藏</b><em>$tplData['atl']['fav']</em></span>
+			<span class="scoredInfo">已收藏</span>
+			<span class="scoreAnimate">+1</span>
+		</a> -->
+	</span>	
+	查看：$:tplData['atl']['views'] 
 	$ cate_id = tplData['atl']['category']
 	分类：<a href="${makeUrl('index', 'index', {'category': cate_id})}" >${tplData['atl']['categoryList'].get(cate_id)}</a>				
 	标签：
 	$for tag in tplData['atl']['tags']:
 		<a href="${makeUrl('index', 'tag', {'name' : tag} )}">$tag</a>
-	</small>
+	</small>	
 	</article>
 	<!-- 百度分享按钮 -->
 	感觉文章还不错？ 赶快分享给小伙伴吧！
@@ -26,7 +41,7 @@ $:tplData['render'].header(tplData)
 	<!-- 相关推荐 -->
 
 	<!-- 广告位 -->
-		<a name="#comment"></a>
+		<a name="commentarea"></a>
 	    $:tplData['render'].comments(tplData)
 	    
 	</div>

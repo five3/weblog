@@ -25,7 +25,7 @@ class index(baseAction):
         cmsList = cmsObj.getList('*',condition,'orders desc,createTime desc',str(offset)+','+str(count))
         self.assign('cmsList',cmsList)
         path = web.ctx.env['PATH_INFO'] if web.ctx.env['PATH_INFO'].strip('/') else '/index/index'
-        print web.ctx.env['PATH_INFO']
+#         print web.ctx.env['PATH_INFO']
         pageString = self.getPageStr(path, page,count,totalCount)
         self.assign('pageString',pageString)
         commentObj=model.comment()
@@ -43,6 +43,8 @@ class index(baseAction):
 #         print cmsList      
         return self.display('index')
     def seo(self):
+        return self.index()
+    def songli(self):
         return self.index()
     def tag(self):
         settings = self.getSettings()

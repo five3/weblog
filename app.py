@@ -13,7 +13,8 @@ class dispatcher:
         return self.__request(path)
 
     def POST(self, path):
-        return self.__request(path)
+        from utils.function import object_to_json
+        return object_to_json(self.__request(path))
 
     def __request(self, path=''):
 #         try:
@@ -42,7 +43,7 @@ class dispatcher:
                 return rt
             result = getattr(modelObj, controllerName)()
         else:
-            result = 'no controller'
+            result = {'errorCode': -1000, 'message': 'no controller'}
         return result
 #         except Exception ,e:
 #             traceback.format_exc()

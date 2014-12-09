@@ -62,7 +62,7 @@ function serverResponse(){
 	}
 }
 window.onload = function() {
-	$mm('submit').disabled = false;
+//	$mm('submit').disabled = false;
 	if(getCookie("author")){
 	$mm('name').value=getCookie("author");
 	$mm('emails').value=getCookie("email");

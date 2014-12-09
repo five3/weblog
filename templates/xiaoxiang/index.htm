@@ -18,13 +18,22 @@ $:tplData['render'].header(tplData)
 		        	</a>
 		        	<div class="previewText">
 			        $subStr(i['content'],1,100)
-			        <a target="_blank"  href="$makeUrl('index','show',{'id':i['id']})" >查看详文 &raquo;</a>
-			        $if i['direct_buy_url']:
-			        	<p>
-			        	<a target="_blank"  href="$makeUrl('index','show',{'id':i['id']})" >赞</a>
-			        	<a target="_blank"  href="$makeUrl('index','show',{'id':i['id']})" >收藏</a>
-			        	<a target="_blank"  href="$i['direct_buy_url']" class="rightButtom">直接购买 &raquo;</a>
-			        	</p>
+			        <a target="_blank"  href="$makeUrl('index','show',{'id':i['id']})" >查看详文 &raquo;</a>			        
+		        	<p class="buyit">
+		        	<a href="javascript:void(0);" class="good" id="up_$i['id']" onclick="upit($i['id']);" >
+						<span class="scoreTotal"><b>赞</b><em>$i['up']</em></span>
+						<span class="scoredInfo">已赞</span>
+						<span class="scoreAnimate">+1</span>
+					</a>
+					<!--  
+					<a href="javascript:void(0);" class="good" id="" >
+						<span class="scoreTotal"><b>收藏</b><em>$i['fav']</em></span>
+						<span class="scoredInfo">已收藏</span>
+						<span class="scoreAnimate">+1</span>
+					</a> -->
+		        	$if i['direct_buy_url']:
+		        		<a target="_blank"  href="$i['direct_buy_url']" class="rightButtom">直接购买 &raquo;</a>
+		        	</p>
 			        </div>
 			        <div class="clear"></div>
 		        </div>

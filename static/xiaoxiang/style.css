@@ -25,7 +25,7 @@ code {background:#EFEBEB; border-left:3px dashed rgb(230,230,230); padding:10px 
 #header h2 {font-size:14px;}
 #toolbar {height:30px; font-size:20px; margin:0px auto; width:250px; float: right; }
 #searchform {background:#fafafa; border:1px solid #ccc; margin-top: 2px; border-radius: 3px; border: 1px solid #dcdcdc; padding:3px 5px; height:16px; float:right; }
-#searchform label {display:none;}
+.hide, #searchform label, .scoredInfo {display:none;}
 #searchform input {border:none; background:none; box-shadow:none; width:150px; height:20px; line-height:20px; vertical-align:top;}
 #searchform button {background:url(search.png) no-repeat; width:25px; height:25px; text-indent:-999px; vertical-align:top; border:none; cursor:pointer; margin-left:-5px; font-size:0;}
 #searchform button:hover {background:url(search_hover.png) no-repeat;}
@@ -122,7 +122,7 @@ blockquote p:last-child {margin-bottom:0;}
 .withImg .previewImg { width: 190px; height: 190px; float: left; margin-right: 20px; text-align: center; display: block; overflow: hidden; }
 .withImg .previewText { width: 490px; height: 190px; float: left; }
 .withNoImg .previewImg { width: 190px; height: 190px; float: left; margin-right: 20px; text-align: center; display: none; overflow: hidden; }
-.rightButtom {display: block;  width: 110px; float: right; margin: 30px 10px 0 0; height: 25px;  text-align: center;  line-height: 25px;  background-color: #f04848;  border: 1px solid #f04848;  color: #fff;  -webkit-border-radius: 2px;  -moz-border-radius: 2px;  -ms-border-radius: 2px;  -o-border-radius: 2px;  border-radius: 2px; }
+.rightButtom {display: block;  width: 110px; float: right; margin: 0px 10px 0 0; height: 25px;  text-align: center;  line-height: 25px;  background-color: #f04848;  border: 1px solid #f04848;  color: #fff;  -webkit-border-radius: 2px;  -moz-border-radius: 2px;  -ms-border-radius: 2px;  -o-border-radius: 2px;  border-radius: 2px; }
 .blackhref { color:#000; text-decoration:none; }
 a.rightButtom:hover { color:#000; }
 .nav { width:1080px; margin:0px auto;  }
@@ -176,4 +176,82 @@ text-decoration: none;
 color: #000;
 }
 #menu .nav-link {color:#ccc;}
-.search-tab 
+#menu .nav-link:hover {color:#ccc;}
+.buyit {
+	margin: 30px 5px 5px 0px;
+}
+.buyit a.good, .buyit a.bad {
+padding: 0 6px;
+border: 1px solid #ccc;
+line-height: 28px;
+-webkit-border-radius: 2px;
+-moz-border-radius: 2px;
+-ms-border-radius: 2px;
+-o-border-radius: 2px;
+border-radius: 2px;
+position: relative;
+min-width: 44px;
+text-align: center;
+}
+.buyit a.good:hover {
+	background-color: #f04848;
+	color: #fff;
+	text-decoration: none;
+	border: 1px solid #f04848;
+}
+.buyit a {
+margin-right: 10px;
+}
+.buyit a b {
+vertical-align: 2px;;
+color: #f04848;
+font-size: 14px;
+}
+.buyit em {
+	font-size: 12px;
+	vertical-align: 2px;;
+	color: #ccc;
+}
+.buyit a:hover b, .buyit a:hover em {
+color: #fff;
+}
+.scoreAnimate {
+position: absolute;
+left: 0;
+top: -18px;
+color: #f04848;
+font-size: 14px;
+font-weight: bold;
+display: none;
+width: 100%;
+text-align: center;
+}
+.icon-weibo {
+	background: #000000 url(/static/xiaoxiang/sns.png) no-repeat;
+	height:52px;
+	width:52px;
+	display: block;
+}
+.icon-weixin {
+	background: #000000 url(/static/xiaoxiang/sns.png) no-repeat scroll -52px 0px;
+	height:52px;
+	width:52px;
+	display: block;
+}
+.icon-rss {
+	background: #000000 url(/static/xiaoxiang/sns.png) no-repeat scroll -103px 0px;
+	height:52px;
+	width:52px;
+	display: block;
+}
+.share_app_icon {
+}
+.share_box{
+	float:left;
+	width:120px;
+	text-align: center;
+	margin-right: 3px;
+}
+.share_app_icon .share_box a {
+	float:left;
+}
