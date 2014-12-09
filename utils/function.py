@@ -7,3 +7,4 @@ def singleton(className):
         className.__it__=className()
         return className.__it__
     return wrapped
+

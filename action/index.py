@@ -40,7 +40,6 @@ class index(baseAction):
         self.assign('lastCommentList', lastCommentList)  ##最新评论列表  
 #         print cmsList      
         return self.display('index')
-
     def seo(self):
         return self.index()
     def tag(self):
@@ -113,7 +112,7 @@ class index(baseAction):
         if not self.validates(validList):
             return self.error(self.errorMessage)
         date = time.strftime("%Y-%m-%d %H:%M:%S",time.localtime())
-        HTTP_X_REAL_IP =  web.ctx.env['HTTP_X_REAL_IP']
+        HTTP_X_REAL_IP =  web.ctx.env.get('HTTP_X_REAL_IP')
         ip=HTTP_X_REAL_IP if HTTP_X_REAL_IP else web.ctx.ip
         data={
             'cmsId':cmsId,

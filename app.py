@@ -33,6 +33,13 @@ class dispatcher:
         moduleList = __import__('action.' + modelName, {}, {}, [modelName])
         modelObj = getattr(moduleList, modelName)(pars)
         if hasattr(modelObj, controllerName):
+            from action.ip import ip
+            ipObj = ip(pars)
+            settings.BLACKLIST = ipObj.getBlackList()
+#             print settings.BLACKLIST
+            rt = ipObj.logIp()
+            if rt:
+                return rt
             result = getattr(modelObj, controllerName)()
         else:
             result = 'no controller'
