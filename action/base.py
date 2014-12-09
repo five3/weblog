@@ -137,20 +137,19 @@ class base:
                 inputData[k]= self.htmlunquote(v)
         return inputData
     def getPageStr(self,url,currentPage,perPageCount,totalCount=10000):
-        totalPage = int(math.ceil(totalCount/perPageCount))
-        if '?' in url:
-            url=url+'&page='
-        else:
-            url=url+'?page='
+        mod = totalCount%perPageCount
+        totalPage = totalCount/perPageCount
+        if mod>0:
+            totalPage += 1
+        url=url+'/page_'
         pageString= ''
-
         if currentPage > 1:
             pageString += '''
-                <span class="alignleft"><a href="'''+url+str(currentPage-1)+'''">&laquo; 上一页</a></span>
+                <span class="rightButtom"><a href="'''+url+str(currentPage-1)+'''">&laquo; 上一页</a></span>
             '''
         if totalPage>currentPage:
-            pageString = pageString+'''
-            <span class="alignright"><a href="'''+url+str(currentPage+1)+'''">下一页 &raquo;</a></span>
+            pageString +='''
+            <span class="rightButtom"><a href="'''+url+str(currentPage+1)+'''">下一页 &raquo;</a></span>
         '''
         return pageString
     def getSettings(self):

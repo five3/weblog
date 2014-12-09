@@ -57,8 +57,8 @@ blockquote p:last-child {margin-bottom:0;}
 .wp-caption {border-radius:3px; border:1px solid #ccc; background:#f9f9f9; box-shadow:1px 1px 2px #d3d3d3; margin-bottom:10px; text-align:center; padding:4px 0;}
 .post .wp-caption img {max-width:630px;}
 .wp-caption-text,.gallery-caption {text-align:center; font-size:12px; margin-bottom:0;}
-.navigation {height:20px; line-height:20px; font-size:12px;}
-.navigation a {color:#666;}
+.navigation {height:20px; line-height:20px; font-size:16px;}
+.navigation a {color:#fff;}
 #nopage {text-align:center; padding:180px 0 100px; background:url(404.png) no-repeat center 70px;}
 #comments {margin-top:30px; font-size:16px;}
 #comments h3 {border-bottom:1px solid #ddd; padding-bottom:5px;}
