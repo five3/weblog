@@ -19,13 +19,14 @@ class index(baseAction):
         cmsObj = model.cms()
         condition = {'status':1}
         if 'category' in inputParams:
-            condition['category'] = inputParams['category']
-            
+            condition['category'] = inputParams['category']            
         listData = cmsObj.getOne('COUNT(*) AS `total`',condition)
         totalCount = listData['total']
         cmsList = cmsObj.getList('*',condition,'orders desc,createTime desc',str(offset)+','+str(count))
         self.assign('cmsList',cmsList)
-        pageString = self.getPageStr(web.ctx.env['PATH_INFO'],page,count,totalCount)
+        path = web.ctx.env['PATH_INFO'] if web.ctx.env['PATH_INFO'].strip('/') else '/index/index'
+        print web.ctx.env['PATH_INFO']
+        pageString = self.getPageStr(path, page,count,totalCount)
         self.assign('pageString',pageString)
         commentObj=model.comment()
         commentList = commentObj.getList('*',{'status':1},'id desc',str(offset)+','+str(count))
