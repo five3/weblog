@@ -15,8 +15,10 @@ class ip(baseAction):
 #         print ip
         if ip in self.blackList:
             return self.error('你访问的过勤，我不想见你了。')
+        path = web.ctx.env.get('REQUEST_URI')
+        method = web.ctx.env.get('REQUEST_METHOD')
+        data = {'ip': ip, 'path': path, 'method': method, 'create_date': time.strftime("%Y-%m-%d %H:%M:%S",time.localtime())}
         ipObj = model.ip()
-        data = {'ip': ip, 'create_date': time.strftime("%Y-%m-%d %H:%M:%S",time.localtime())}
         ipObj.insert(data)
         
     def getBlackList(self):
