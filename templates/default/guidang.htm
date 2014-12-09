@@ -7,7 +7,7 @@ $if listData:
 	        $for i in listData:
 	            <li class="listItem">
 	            	<div class="listInfo">
-	                    <div class="itemName"><a href="${makeUrl('index', i['name'])}" target="_blank" >${i['name']}&nbsp;($i['num'])</a></div>
+	                    <div class="itemName"><a href="${makeUrl('index', 'index', {'category': i['id']} )}" target="_blank" >${i['name']}&nbsp;($i['num'])</a></div>
 	                </div>
 	            </li>
 	        <!-- listCurrent end-->

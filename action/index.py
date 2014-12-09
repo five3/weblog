@@ -41,6 +41,8 @@ class index(baseAction):
 #         print cmsList      
         return self.display('index')
 
+    def seo(self):
+        return self.index()
     def tag(self):
         settings = self.getSettings()
         count = settings.PER_PAGE_COUNT
