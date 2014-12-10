@@ -9,3 +9,4 @@ from unio import *
 from category import *
 from ip import *
 from blacklist import *
+from favurl import *

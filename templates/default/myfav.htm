@@ -1,0 +1,10 @@
+$def with (tplData)
+<div>
+$for k,v in tplData.items():
+	<h2>$k</h2>
+	<hr/>
+	<ul class="favurl">
+	$for i in v:
+		<li><a href="$i['url']" target="_blank" rel="nofollow">$i['name']</a></li>
+	</ul>
+</div>

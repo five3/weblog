@@ -17,7 +17,7 @@ input {vertical-align:middle;}
 input[type^="radio"] {border:none; background:none; width:auto;}
 ::selection {color:#fff; background:#444; text-shadow:none;}
 code {background:#EFEBEB; border-left:3px dashed rgb(230,230,230); padding:10px 10px 10px 13px; font:16px/1.5 "Hiragino Sans GB",Tahoma,Helvetica,Arial; display:block;}
-#wrap,#footer_box {background:#fff; width:700px; padding:20px 10px; float:left;}
+#wrap,#footer_box {background:#fff; min-width:700px; padding:20px 10px; float:left;}
 #content {overflow:hidden; color:#555; clear:both;}
 #header {text-align:center; margin-top: -50px; background: #eee; height:240px; width:100%; background-size: cover;}
 #logo {margin:20px auto 10px;}
@@ -126,4 +126,6 @@ blockquote p:last-child {margin-bottom:0;}
 .blackhref { color:#000; text-decoration:none; }
 a.rightButtom:hover { color:#000; }
 .nav { width:1080px; margin:0px auto;  }
-#leftside { width:200px; padding: 20px 10px; float:left; }
+#leftside { width:150px; padding: 20px 10px; float:left; }
+ul.favurl li {float: left; width: 50px; margin:5px 10px; text-align: center; }
+
