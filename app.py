@@ -14,8 +14,12 @@ class dispatcher:
 
     def POST(self, path):
         from utils.function import object_to_json
-        return object_to_json(self.__request(path))
-
+        content = self.__request(path)
+        if isinstance(content, dict):
+            return object_to_json(content)
+        else:
+            return content
+        
     def __request(self, path=''):
 #         try:
         if path.count('/') < 2:
