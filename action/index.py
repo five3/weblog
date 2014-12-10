@@ -75,7 +75,8 @@ class index(baseAction):
         cmsObj = model.cms()
         condition = {'status':1,'id':str(id)}
         atl = cmsObj.getOne('*',condition)
-        if atl == None:
+#         print atl
+        if not atl:
             raise web.notfound('not found')
         atl['views']+=1
         updateData = {'views':(atl['views'])}
