@@ -6,6 +6,7 @@ $def with (tplData)
     <title>$:tplData['webTitle'] - $:tplData['webName']</title>
     <link rel="stylesheet" href="$makeUrl('static','default/style.css')" />
     <link rel="alternate" type="application/rss+xml" title=" RSS Feed" href="$makeUrl('rss')" />
+    <script type="text/javascript" src="$makeUrl('static','default/jquery-1.8.3.min.js')"></script>
     <script type="text/javascript" src="$makeUrl('static','default/bin.js')"></script>
     <link rel="shortcut icon" href="$makeUrl('static','default/favicon.ico')">
     <!--[if IE]>
@@ -40,8 +41,7 @@ $def with (tplData)
 	    </li>
     </ul>
     <div id="toolbar">
-    <script type="text/javascript">document.write(unescape('%3Cdiv id="bdcs"%3E%3C/div%3E%3Cscript charset="utf-8" src="http://znsv.baidu.com/customer_search/api/js?sid=3070183968363558035') + '&plate_url=' + (encodeURIComponent(window.location.href)) + '&t=' + (Math.ceil(new Date()/3600000)) + unescape('"%3E%3C/script%3E'));</script>
-    </div> 
+	</div> 
     </div>
     </nav>
     <hgroup style="padding-top: 0px;">
