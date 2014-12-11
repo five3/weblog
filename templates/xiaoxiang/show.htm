@@ -5,7 +5,8 @@ $:tplData['render'].header(tplData)
 	<article class="post-$:tplData['atl']['id'] post type-post status-publish format-standard hentry category-$:tplData['atl']['id'] tag-appreciate">
 	
 	<h1>$:tplData['atl']['name']</h1>
-	<small class="meta">$:tplData['atl']['createTime']</small>
+	<small class="meta">$:tplData['atl']['createTime'] 
+	<a target="_blank"  href="$:tplData['atl']['direct_buy_url']" class="rightButtom">直接购买 &raquo;</a></small>
 	<!-- 广告位 -->
 	
 	$:tplData['atl']['content']
@@ -31,6 +32,7 @@ $:tplData['render'].header(tplData)
 	标签：
 	$for tag in tplData['atl']['tags']:
 		<a href="${makeUrl('index', 'tag', {'name' : tag} )}">$tag</a>
+	<a target="_blank"  href="$:tplData['atl']['direct_buy_url']" class="rightButtom">直接购买 &raquo;</a>
 	</small>	
 	</article>
 	<!-- 百度分享按钮 -->

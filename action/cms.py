@@ -14,7 +14,7 @@ class cms(baseAction):
         userInput= self.getInput()
         date = time.strftime("%Y-%m-%d %H:%M:%S",time.localtime())
         data={
-            'content':self.htmlunquote(userInput['content']),
+            'content':self.htmlunquote(userInput['content']).replace("'", "\\'"),
             'name':userInput['name'],
             'keywords':userInput['keywords'],
             'description':userInput['description'],
@@ -36,7 +36,7 @@ class cms(baseAction):
     def modify(self):
         userInput= self.getInput()
         data={
-            'content':self.htmlunquote(userInput['content']),
+            'content':self.htmlunquote(userInput['content']).replace("'", "\\'"),
             'name':userInput['name'],
             'keywords':userInput['keywords'],
             'description':userInput['description'],

@@ -48,7 +48,7 @@ code {background:#EFEBEB; border-left:3px dashed rgb(230,230,230); padding:10px 
 .post ul,.post ol {list-style-position:inside; margin-left:20px; margin-bottom:15px;}
 .post ul {list-style-type:disc;}
 .post ol {list-style-type:decimal;}
-.post li {font-size:14px; margin-bottom:5px;}
+.post li {font-size:18px; margin:5px;}
 .post img {max-width:100%;}
 .post input {height:22px; line-height:22px;}
 .post del {color:#999;}
