@@ -3,10 +3,10 @@
 import os
 #网站信息
 WEB_URL='/'
-WEB_NAME=' 91小象网，有礼有祝福！'
-WEB_SUBNAME='让送礼从此轻松又愉快，让祝福从此时时永相伴！'
-WEB_TITLE='创意礼品店_送礼又许愿'
-WEB_KEYWORDS='创意礼品店，许愿树，许愿墙，创意生日礼物'
+WEB_NAME=' 91小象网，发现优质产品！'
+WEB_SUBNAME='让送礼从此轻松又愉快！'
+WEB_TITLE='好礼物推荐_什么值得买_创意礼品店'
+WEB_KEYWORDS='好礼物推荐，值得推荐的产品，什么值得买，创意礼品店，创意生日礼物'
 WEB_DESCRIPTION='专注于学生、白领等青年人群的送礼导购网站，提供增值的在线许愿服务。'
 TEMPLATE_THEME='xiaoxiang'
 PER_PAGE_COUNT = 10
