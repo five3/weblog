@@ -172,7 +172,7 @@ class base:
     def getCate(self):
         result = model.category().getList('*', {})
         if result:
-            return result
+            return dict([(i['id'],i['name']) for i in result])
         else:
             return {}
         

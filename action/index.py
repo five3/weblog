@@ -25,12 +25,11 @@ class index(baseAction):
         cmsList = cmsObj.getList('*',condition,'orders desc,createTime desc',str(offset)+','+str(count))
         self.assign('cmsList',cmsList)
         path = web.ctx.env['PATH_INFO'] if web.ctx.env['PATH_INFO'].strip('/') else '/index/index'
-#         print web.ctx.env['PATH_INFO']
         pageString = self.getPageStr(path, page,count,totalCount)
         self.assign('pageString',pageString)
-        commentObj=model.comment()
-        commentList = commentObj.getList('*',{'status':1},'id desc',str(offset)+','+str(count))
-        self.assign('commentList', commentList)  ##评论内容列表 
+#         commentObj=model.comment()
+#         commentList = commentObj.getList('*',{'status':1},'id desc',str(offset)+','+str(count))
+#         self.assign('commentList', commentList)  ##评论内容列表 
         unioObj = model.unio() 
         topHotList = unioObj.fetchAll('select id,name,preview_image_src from cms order by views desc limit 0,10')
         self.assign('topHotList', topHotList)  ##最热文章列表 
@@ -40,30 +39,37 @@ class index(baseAction):
         self.assign('tagArtList', tagArtList)  ##标签归档列表  
         lastCommentList = unioObj.fetchAll('select cms.id, `comment`.content as name, cms.preview_image_src from cms, `comment` where cms.id=`comment`.cmsId order by `comment`.createTime desc limit 0,10') 
         self.assign('lastCommentList', lastCommentList)  ##最新评论列表  
-#         print cmsList      
         return self.display('index')
     def seo(self):
         return self.index()
     def songli(self):
+        inputParams = self.getPars()
+        if 'category' in inputParams:
+            cate_id = int(inputParams['category'])
+            cate_name = self.tplData['categoryList'].get(cate_id)
+            self.assign('webTitle', cate_name) 
         return self.index()
     def tag(self):
         settings = self.getSettings()
         count = settings.PER_PAGE_COUNT
         inputParams = self.getPars()
+        if 'name' not in inputParams:
+            raise web.notfound(u"您的访问已超出本府管辖范围！")
+        name = inputParams['name']
         page = int(inputParams['page']) if inputParams.has_key('page') else 1
         offset= (page-1)*count if page > 0 else 0
         cmsObj = model.cms()
-        condition = {'status':1}
-        listData = cmsObj.getOne('COUNT(*) AS `total`',condition)
+        condition = u''' status=1 and tags like '%''' +name+'''%' '''
+        sql = u'select COUNT(*) AS `total` from cms where '  + condition
+#         print sql
+        listData = cmsObj.fetchOne(sql)
         totalCount = listData['total']
-        cmsList = cmsObj.getList('*',condition,'orders desc,createTime desc',str(offset)+','+str(count))
+        sql = u'select * from cms where ' + condition + ' ORDER BY  orders desc,createTime desc limit ' + str(offset)+','+str(count)
+#         print sql 
+        cmsList = cmsObj.fetchAll(sql)
         self.assign('cmsList',cmsList)
         pageString = self.getPageStr(self.makeUrl('index','index'),page,count,totalCount)
         self.assign('pageString',pageString)
-        commentObj=model.comment()
-        commentList = commentObj.getList('*',{'status':1},'id desc',str(offset)+','+str(count))
-        self.assign('commentList',commentList)
-#         print cmsList
         return self.display('index')
     
     def show(self):
@@ -83,11 +89,15 @@ class index(baseAction):
         #view count 
         cmsObj.update(updateData,condition)
         commentList=model.comment().getList('*',{'status':1,'cmsId':int(id)})
-        atl['categoryList'] = dict([(d['id'], d['name']) for d in self.getCate()])
+        atl['categoryList'] = self.getCate()
         atl['tags'] = atl['tags'].split(u'，')
         self.assign('atl',atl)
         self.assign('commentList',commentList)
         self.assignSEO(atl['name'], atl['keywords'], atl['description'])
+        if atl['category']:
+            cate_id = atl['category']
+            cate_name = self.tplData['categoryList'].get(cate_id)
+            self.assign('webTitle', '%s_%s' % (self.tplData['webTitle'], cate_name)) 
         unioObj = model.unio() 
         topNewList = unioObj.fetchAll('select cms.id, cms.name, cms.preview_image_src from cms order by createTime desc limit 0,10')
         self.assign('topNewList', topNewList)  ##最新文章列表 

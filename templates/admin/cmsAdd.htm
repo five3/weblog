@@ -87,11 +87,11 @@ $:tplData['render'].header()
             <td scope="col">
             	<SELECT  name="category" id="category"> 
             	$ k = 0              
-				$for l in tplData['categoryList']:
-					<option value="$:l.get('id')"
+				$for m,n in tplData['categoryList'].items():
+					<option value="$:m"
 					$if k == 0:
 					    selected="selected"
-					>$:l.get('name')</option>
+					>$:n</option>
 					$ k += 1
                 </SELECT>
         </tr>

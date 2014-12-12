@@ -86,11 +86,11 @@ $:tplData['render'].header()
             <td scope="col">分类:</td>
             <td scope="col">
                 <SELECT  name="category" id="category">          
-				$for l in tplData['categoryList']:
-					<option value="$:l.get('id')"
-					$if l.get('id') == tplData['atl']['category']:
+				$for m,n in tplData['categoryList'].items():
+					<option value="$:m"
+					$if m == tplData['atl']['category']:
 					    selected="selected"
-					>$:l.get('name')</option>
+					>$:n</option>
                 </SELECT>
         </tr>
         <tr>
