@@ -7,7 +7,7 @@ WEB_NAME=' 91小象网，发现优质产品！'
 WEB_SUBNAME='让送礼从此轻松又愉快！'
 WEB_TITLE='好礼物推荐_什么值得买_创意礼品店'
 WEB_KEYWORDS='好礼物推荐，值得推荐的产品，什么值得买，创意礼品店，创意生日礼物'
-WEB_DESCRIPTION='专注于学生、白领等青年人群的送礼导购网站，提供增值的在线许愿服务。'
+WEB_DESCRIPTION='专注于学生、白领等青年人群的送礼导购网站，推荐值得买的好礼物，推荐值得买的创意礼品、生日礼物、优质产品等；提供增值的在线许愿服务。'
 TEMPLATE_THEME='xiaoxiang'
 PER_PAGE_COUNT = 10
 
